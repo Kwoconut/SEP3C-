@@ -2,15 +2,15 @@ using System;
 
 class Plane
 {
-    public String CallSign { get; set; }
+    public string CallSign { get; set; }
 
-    public String Model { get; set; }
+    public string Model { get; set; }
 
-    public String Company { get; set; }
+    public string Company { get; set; }
 
     public FlightPlan FlightPlan { get; set; }
 
     public Position Position { get; set; }
 
-    public static String Status { get; set; }
+    public string Status { get; set; } = "AIR";
 }
