@@ -18,4 +18,24 @@ public class Plane
     {
         Status = "AIR";
     }
+
+    public void setStatusToLanded()
+    {
+        Status = "Landed";
+    }
+
+    public void setStatusToTaxi()
+    {
+        Status = "Taxi";
+    }
+
+    public void setStatusToBoarding()
+    {
+        Status = "Boarding";
+    }
+
+    public void setStatusToEmergency()
+    {
+        Status = "Emergency";
+    }
 }

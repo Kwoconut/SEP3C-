@@ -2,7 +2,7 @@ using System;
 
 public class GroundKeyLocation
 {
-    public String Name { get; set; }
+    public string Name { get; set; }
 
     public Checkpoint Checkpoint { get; set; }
 

@@ -3,7 +3,7 @@ using System.DateTime;
 
 public class FlightPlan
 {
-    public String IdOfThePlane { get; set; }
+    public string Id { get; set; }
 
     public Route Route { get; set; }
 
