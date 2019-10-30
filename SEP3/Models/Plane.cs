@@ -13,4 +13,9 @@ public class Plane
     public Position Position { get; set; }
 
     public string Status { get; set; } = "AIR";
+
+    public void setStatusToAir()
+    {
+        Status = "AIR";
+    }
 }

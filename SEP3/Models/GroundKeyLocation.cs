@@ -6,5 +6,13 @@ public class GroundKeyLocation
 
     public Checkpoint Checkpoint { get; set; }
 
-    public static String Type { get; set; }
+    public string Type { get; set; }
+
+    public GroundKeyLocation(string  Name, Checkpoint Checkpoint, string Type)
+    {
+        this.Name = Name;
+        this.Checkpoint = Checkpoint;
+        this.Type = Type;
+    }
+
 }
