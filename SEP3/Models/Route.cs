@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic.List;
 
-class Route
+public class Route
 {
     public Position StartLocation { get; set; }
 

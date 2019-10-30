@@ -1,8 +1,8 @@
 using System;
 
-class Position
+public class Position
 {
-    int xPosition { get; set; }
+    public int xPosition { get; set; }
 
-    int yPosition { get; set; }
+    public int yPosition { get; set; }
 }

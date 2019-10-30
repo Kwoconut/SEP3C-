@@ -1,6 +1,6 @@
 using System;
 
-class Plane
+public class Plane
 {
     public string CallSign { get; set; }
 

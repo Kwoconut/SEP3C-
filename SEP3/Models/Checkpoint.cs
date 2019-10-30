@@ -7,4 +7,6 @@ public class Checkpoint
     public Position Position { get; set; }
 
     public static String Type { get; set; }
+
+
 }
