@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "D:\\lectii\\SEP3\\SEP3C-\\SEP3 Tier 3\\SEP3 Tier 3.csproj": {}
+    "D:\\lectii\\SEP3\\SEP3C-\\SEP3 Tier 3\\SEP3.csproj": {}
   },
   "projects": {
-    "D:\\lectii\\SEP3\\SEP3C-\\SEP3 Tier 3\\SEP3 Tier 3.csproj": {
+    "D:\\lectii\\SEP3\\SEP3C-\\SEP3 Tier 3\\SEP3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\lectii\\SEP3\\SEP3C-\\SEP3 Tier 3\\SEP3 Tier 3.csproj",
-        "projectName": "SEP3 Tier 3",
-        "projectPath": "D:\\lectii\\SEP3\\SEP3C-\\SEP3 Tier 3\\SEP3 Tier 3.csproj",
+        "projectUniqueName": "D:\\lectii\\SEP3\\SEP3C-\\SEP3 Tier 3\\SEP3.csproj",
+        "projectName": "SEP3",
+        "projectPath": "D:\\lectii\\SEP3\\SEP3C-\\SEP3 Tier 3\\SEP3.csproj",
         "packagesPath": "C:\\Users\\Angel\\.nuget\\packages\\",
         "outputPath": "D:\\lectii\\SEP3\\SEP3C-\\SEP3 Tier 3\\obj\\",
         "projectStyle": "PackageReference",
