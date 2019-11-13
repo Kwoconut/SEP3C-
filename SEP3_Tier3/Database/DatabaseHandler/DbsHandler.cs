@@ -8,7 +8,7 @@ namespace Dbs.Database.DatabaseHandler
 {
     class DbsHandler : DbsPersistence
     {        
-        public List<Plane> LoadPlanes()
+        public List<Plane> LoadPlanesWithPositionAndPlan()
         {
             using (var context = new AppDbContext())
             {

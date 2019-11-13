@@ -62,10 +62,19 @@ namespace Dbs.Server
                     Request request = ReceiveRequest(stream);
                     if (request.Type == Request.TYPE.REQUESTPLANES)
                     {
+                        if(serverModel.Planes.Count == 0)
+                        {
+                            serverModel.LoadPlanesWithPositionAndPlan();
+                        }
                         SendPlanes(stream, serverModel.Planes);
                     }
                     if(request.Type == Request.TYPE.REQUESTNODESWITHEDGES)
                     {
+                        if (serverModel.GroundNodesToSend.Count == 0)
+                        {
+                            serverModel.LoadNodesWithEdgeAndPosition();
+                            serverModel.CreateNodesToSend();
+                        }
                         SendNodesWithEdges(stream, serverModel.GroundNodesToSend);
                     }
                 }

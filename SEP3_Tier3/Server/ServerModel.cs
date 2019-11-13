@@ -28,16 +28,18 @@ namespace Dbs
             GroundNodes = new List<GroundNode>();
             NodeEdges = new List<NodeEdge>();
             GroundNodesToSend = new List<GroundNodeToSend>();
-
+            /*LoadNodesWithEdgeAndPosition();
+            CreateNodesToSend();*/
+            /*
             LoadPlanes();
             LoadNodesWithEdgeAndPosition();
             LoadNodes();
             LoadEdges();
             LoadFlightPlans();
             CreateNodesToSend();
-            Console.WriteLine(DateTime.Now.Kind);
+            Console.WriteLine(DateTime.Now.Kind);*/
 
-            foreach (Plane plane in Planes)
+            /*foreach (Plane plane in Planes)
             {
                 Console.WriteLine(plane);
             }
@@ -66,10 +68,10 @@ namespace Dbs
             {
                 Console.WriteLine(node);
             }
-            Console.WriteLine("-----------------------");
+            Console.WriteLine("-----------------------");*/
         }
 
-        private void CreateNodesToSend()
+        public void CreateNodesToSend()
         {
             foreach(NodeEdge nodeEdge in NodeEdges)
             {
@@ -95,10 +97,10 @@ namespace Dbs
                 {
                     edge.EdgeId = edge.EdgeId - 1;
                 }
-            }
+            }   
         }
 
-        private void LoadFlightPlans()
+        public void LoadFlightPlans()
         {
             try
             {
@@ -110,7 +112,7 @@ namespace Dbs
             }
         }
 
-        private void LoadEdges()
+        public void LoadEdges()
         {
             try
             {
@@ -122,7 +124,7 @@ namespace Dbs
             }
         }
 
-        private void LoadNodes()
+        public void LoadNodes()
         {
             try
             {
@@ -134,7 +136,7 @@ namespace Dbs
             }
         }
 
-        private void LoadNodesWithEdgeAndPosition()
+        public void LoadNodesWithEdgeAndPosition()
         {
             try
             {
@@ -146,11 +148,11 @@ namespace Dbs
             }
         }
 
-        private void LoadPlanes()
+        public void LoadPlanesWithPositionAndPlan()
         {
             try
             {
-              Planes = DatabaseAccess.LoadPlanes();
+              Planes = DatabaseAccess.LoadPlanesWithPositionAndPlan();
             }
             catch (Exception e)
             {

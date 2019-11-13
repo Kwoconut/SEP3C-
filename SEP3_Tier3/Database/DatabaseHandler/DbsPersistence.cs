@@ -7,7 +7,7 @@ namespace Dbs.Database.DatabaseHandler
 {
     interface DbsPersistence
     {
-        public List<Plane> LoadPlanes();
+        public List<Plane> LoadPlanesWithPositionAndPlan();
         public List<NodeEdge> LoadNodesWithEdgeAndPosition();
         public List<GroundNode> LoadGroundNodes();
         public List<Edge> LoadEdges();
