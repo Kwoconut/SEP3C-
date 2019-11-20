@@ -1,5 +1,6 @@
 using Dbs.Model;
 using Microsoft.EntityFrameworkCore;
+using SEP3_TIER3.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,8 @@ namespace Dbs
             modelBuilder.Entity<Edge>().HasKey("EdgeId");
             modelBuilder.Entity<FlightPlan>().HasKey("Id");
             modelBuilder.Entity<Position>().HasKey("XCoordinate", "YCoordinate");
-   
+            modelBuilder.Entity<Target>().HasKey("XCoordinate", "YCoordinate");
+
             modelBuilder.Entity<NodeEdge>()
                 .HasKey(nodeEdge => new { nodeEdge.EdgeId, nodeEdge.NodeId });
 

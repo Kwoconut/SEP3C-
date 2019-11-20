@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Dbs.Migrations
+namespace SEP3_TIER3.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
@@ -136,11 +136,19 @@ namespace Dbs.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("TargetXCoordinate")
+                        .HasColumnType("float");
+
+                    b.Property<double>("TargetYCoordinate")
+                        .HasColumnType("float");
+
                     b.HasKey("CallSign");
 
                     b.HasIndex("FlightPlanId");
 
                     b.HasIndex("PositionXCoordinate", "PositionYCoordinate");
+
+                    b.HasIndex("TargetXCoordinate", "TargetYCoordinate");
 
                     b.ToTable("Planes");
                 });
@@ -156,6 +164,19 @@ namespace Dbs.Migrations
                     b.HasKey("XCoordinate", "YCoordinate");
 
                     b.ToTable("Positions");
+                });
+
+            modelBuilder.Entity("SEP3_TIER3.Model.Target", b =>
+                {
+                    b.Property<double>("XCoordinate")
+                        .HasColumnType("float");
+
+                    b.Property<double>("YCoordinate")
+                        .HasColumnType("float");
+
+                    b.HasKey("XCoordinate", "YCoordinate");
+
+                    b.ToTable("Target");
                 });
 
             modelBuilder.Entity("Dbs.Model.GroundNode", b =>
@@ -193,6 +214,12 @@ namespace Dbs.Migrations
                     b.HasOne("Dbs.Position", "Position")
                         .WithMany()
                         .HasForeignKey("PositionXCoordinate", "PositionYCoordinate")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SEP3_TIER3.Model.Target", "Target")
+                        .WithMany()
+                        .HasForeignKey("TargetXCoordinate", "TargetYCoordinate")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

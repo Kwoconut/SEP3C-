@@ -30,16 +30,15 @@ namespace Dbs
             GroundNodesToSend = new List<GroundNodeToSend>();
             /*LoadNodesWithEdgeAndPosition();
             CreateNodesToSend();*/
-            /*
-            LoadPlanes();
+            
+            LoadPlanesWithPositionAndPlan();
             LoadNodesWithEdgeAndPosition();
             LoadNodes();
             LoadEdges();
             LoadFlightPlans();
             CreateNodesToSend();
-            Console.WriteLine(DateTime.Now.Kind);*/
 
-            /*foreach (Plane plane in Planes)
+            foreach (Plane plane in Planes)
             {
                 Console.WriteLine(plane);
             }
@@ -68,7 +67,7 @@ namespace Dbs
             {
                 Console.WriteLine(node);
             }
-            Console.WriteLine("-----------------------");*/
+            Console.WriteLine("-----------------------");
         }
 
         public void CreateNodesToSend()

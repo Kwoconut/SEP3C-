@@ -1,3 +1,4 @@
+using SEP3_TIER3.Model;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -23,6 +24,9 @@ namespace Dbs
 
         [Required]
         public Position Position { get; set; }
+
+        [Required]
+        public Target Target { get; set; }
 
         public string Status { get; set; } = "In air";
 

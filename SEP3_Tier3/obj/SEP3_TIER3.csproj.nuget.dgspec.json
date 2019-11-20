@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SEP3C#\\SEP3C-\\SEP3_Tier3\\SEP3_TIER3.csproj": {}
+    "D:\\SEP3C#\\SEP3C-\\SEP3_TIER3\\SEP3_TIER3.csproj": {}
   },
   "projects": {
-    "D:\\SEP3C#\\SEP3C-\\SEP3_Tier3\\SEP3_TIER3.csproj": {
+    "D:\\SEP3C#\\SEP3C-\\SEP3_TIER3\\SEP3_TIER3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SEP3C#\\SEP3C-\\SEP3_Tier3\\SEP3_TIER3.csproj",
+        "projectUniqueName": "D:\\SEP3C#\\SEP3C-\\SEP3_TIER3\\SEP3_TIER3.csproj",
         "projectName": "SEP3_TIER3",
-        "projectPath": "D:\\SEP3C#\\SEP3C-\\SEP3_Tier3\\SEP3_TIER3.csproj",
+        "projectPath": "D:\\SEP3C#\\SEP3C-\\SEP3_TIER3\\SEP3_TIER3.csproj",
         "packagesPath": "C:\\Users\\Fabian\\.nuget\\packages\\",
-        "outputPath": "D:\\SEP3C#\\SEP3C-\\SEP3_Tier3\\obj\\",
+        "outputPath": "D:\\SEP3C#\\SEP3C-\\SEP3_TIER3\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

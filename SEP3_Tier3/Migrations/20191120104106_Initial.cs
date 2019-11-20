@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Dbs.Migrations
+namespace SEP3_TIER3.Migrations
 {
     public partial class Initial : Migration
     {
@@ -52,6 +52,18 @@ namespace Dbs.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Target",
+                columns: table => new
+                {
+                    XCoordinate = table.Column<double>(nullable: false),
+                    YCoordinate = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Target", x => new { x.XCoordinate, x.YCoordinate });
+                });
+
+            migrationBuilder.CreateTable(
                 name: "GroundNodes",
                 columns: table => new
                 {
@@ -84,6 +96,8 @@ namespace Dbs.Migrations
                     FlightPlanId = table.Column<int>(nullable: false),
                     PositionXCoordinate = table.Column<double>(nullable: false),
                     PositionYCoordinate = table.Column<double>(nullable: false),
+                    TargetXCoordinate = table.Column<double>(nullable: false),
+                    TargetYCoordinate = table.Column<double>(nullable: false),
                     Status = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -99,6 +113,12 @@ namespace Dbs.Migrations
                         name: "FK_Planes_Positions_PositionXCoordinate_PositionYCoordinate",
                         columns: x => new { x.PositionXCoordinate, x.PositionYCoordinate },
                         principalTable: "Positions",
+                        principalColumns: new[] { "XCoordinate", "YCoordinate" },
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Planes_Target_TargetXCoordinate_TargetYCoordinate",
+                        columns: x => new { x.TargetXCoordinate, x.TargetYCoordinate },
+                        principalTable: "Target",
                         principalColumns: new[] { "XCoordinate", "YCoordinate" },
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -146,6 +166,11 @@ namespace Dbs.Migrations
                 name: "IX_Planes_PositionXCoordinate_PositionYCoordinate",
                 table: "Planes",
                 columns: new[] { "PositionXCoordinate", "PositionYCoordinate" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Planes_TargetXCoordinate_TargetYCoordinate",
+                table: "Planes",
+                columns: new[] { "TargetXCoordinate", "TargetYCoordinate" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -164,6 +189,9 @@ namespace Dbs.Migrations
 
             migrationBuilder.DropTable(
                 name: "FlightPlans");
+
+            migrationBuilder.DropTable(
+                name: "Target");
 
             migrationBuilder.DropTable(
                 name: "Positions");
