@@ -1,5 +1,4 @@
-﻿
-using SEP3_TIER3.Model;
+﻿using SEP3_TIER3.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,54 +71,54 @@ namespace SEP3_TIER3.Database
             };
             var edges = new List<Edge>
             {
-                new Edge{FromNodeIndex = 8, ToNodeIndex = 9, Length = 4 },
-                new Edge{FromNodeIndex = 0, ToNodeIndex = 4, Length = 2 },
-                new Edge{FromNodeIndex = 11, ToNodeIndex = 10, Length = 4 },
-                new Edge{FromNodeIndex = 10, ToNodeIndex = 9, Length = 4},
-                new Edge{FromNodeIndex = 13, ToNodeIndex = 12, Length = 8},
-                new Edge{FromNodeIndex = 12, ToNodeIndex = 10, Length = 4},
-                new Edge{FromNodeIndex = 1, ToNodeIndex = 4, Length = 2},
-                new Edge{FromNodeIndex = 2, ToNodeIndex = 4, Length = 2},
-                new Edge{FromNodeIndex = 3, ToNodeIndex = 4, Length = 2},
-                new Edge{FromNodeIndex = 4, ToNodeIndex = 5, Length = 16},
-                new Edge{FromNodeIndex = 5, ToNodeIndex = 6, Length = 4},
-                new Edge{FromNodeIndex = 5, ToNodeIndex = 13, Length = 8},
-                new Edge{FromNodeIndex = 6, ToNodeIndex = 7, Length = 4},
-                new Edge{FromNodeIndex = 6, ToNodeIndex = 11, Length = 4},
-                new Edge{FromNodeIndex = 7, ToNodeIndex = 8, Length = 4},
-                new Edge{FromNodeIndex = 12, ToNodeIndex = 14, Length = 10},
-                new Edge{FromNodeIndex = 14, ToNodeIndex = 16, Length = 4},
-                new Edge{FromNodeIndex = 16, ToNodeIndex = 17, Length = 4},
-                new Edge{FromNodeIndex = 17, ToNodeIndex = 18, Length = 4},
-                new Edge{FromNodeIndex = 18, ToNodeIndex = 19, Length = 4},
-                new Edge{FromNodeIndex = 19, ToNodeIndex = 5, Length = 4},
-                new Edge{FromNodeIndex = 19, ToNodeIndex = 15, Length = 8},
-                new Edge{FromNodeIndex = 15, ToNodeIndex = 14, Length = 8}
+                new Edge{EdgeId = 1, FromNodeIndex = 8, ToNodeIndex = 9, Length = 4 },
+                new Edge{EdgeId = 2, FromNodeIndex = 0, ToNodeIndex = 4, Length = 2 },
+                new Edge{EdgeId = 3, FromNodeIndex = 11, ToNodeIndex = 10, Length = 4 },
+                new Edge{EdgeId = 4, FromNodeIndex = 10, ToNodeIndex = 9, Length = 4},
+                new Edge{EdgeId = 5, FromNodeIndex = 13, ToNodeIndex = 12, Length = 8},
+                new Edge{EdgeId = 6, FromNodeIndex = 12, ToNodeIndex = 10, Length = 4},
+                new Edge{EdgeId = 7, FromNodeIndex = 1, ToNodeIndex = 4, Length = 2},
+                new Edge{EdgeId = 8, FromNodeIndex = 2, ToNodeIndex = 4, Length = 2},
+                new Edge{EdgeId = 9, FromNodeIndex = 3, ToNodeIndex = 4, Length = 2},
+                new Edge{EdgeId = 10, FromNodeIndex = 4, ToNodeIndex = 5, Length = 16},
+                new Edge{EdgeId = 11, FromNodeIndex = 5, ToNodeIndex = 6, Length = 4},
+                new Edge{EdgeId = 12, FromNodeIndex = 5, ToNodeIndex = 13, Length = 8},
+                new Edge{EdgeId = 13, FromNodeIndex = 6, ToNodeIndex = 7, Length = 4},
+                new Edge{EdgeId = 14, FromNodeIndex = 6, ToNodeIndex = 11, Length = 4},
+                new Edge{EdgeId = 15, FromNodeIndex = 7, ToNodeIndex = 8, Length = 4},
+                new Edge{EdgeId = 16, FromNodeIndex = 12, ToNodeIndex = 14, Length = 10},
+                new Edge{EdgeId = 17, FromNodeIndex = 14, ToNodeIndex = 16, Length = 4},
+                new Edge{EdgeId = 18, FromNodeIndex = 16, ToNodeIndex = 17, Length = 4},
+                new Edge{EdgeId = 19, FromNodeIndex = 17, ToNodeIndex = 18, Length = 4},
+                new Edge{EdgeId = 20, FromNodeIndex = 18, ToNodeIndex = 19, Length = 4},
+                new Edge{EdgeId = 21, FromNodeIndex = 19, ToNodeIndex = 5, Length = 4},
+                new Edge{EdgeId = 22, FromNodeIndex = 19, ToNodeIndex = 15, Length = 8},
+                new Edge{EdgeId = 23, FromNodeIndex = 15, ToNodeIndex = 14, Length = 8}
             };
 
 
             var groundNodes = new List<GroundNode>
             {
-            new GroundNode{ Name = "Gate A", IsVisited = false, Position = positions[0]},
-            new GroundNode{ Name = "Gate B", IsVisited = false, Position = positions[1]},
-            new GroundNode{ Name = "Gate C", IsVisited = false, Position = positions[2] },
-            new GroundNode{ Name = "Gate D", IsVisited = false, Position = positions[3] },
-            new GroundNode{ Name = "Main Taxiway", IsVisited = false, Position = positions[4] },
-            new GroundNode{ Name = "Taxiway Chokepoint", IsVisited = false, Position = positions[5] },
-            new GroundNode{ Name = "Taxiway A2", IsVisited = false, Position = positions[6] },
-            new GroundNode{ Name = "Taxiway A2", IsVisited = false, Position = positions[7] },
-            new GroundNode{ Name = "Auxiliary Taxiway C32", IsVisited = false, Position = positions[8] },
-            new GroundNode{ Name = "Runway 14", IsVisited = false, Position = positions[9] },
-            new GroundNode{ Name = "Runway", IsVisited = false, Position = positions[10] },
-            new GroundNode{ Name = "Auxiliary Taxiway C33", IsVisited = false, Position = positions[11] },
-            new GroundNode{ Name = "Runway", IsVisited = false, Position = positions[12] },
-            new GroundNode{ Name = "Auxiliary Taxiway C34", IsVisited = false, Position = positions[13] },
-            new GroundNode{ Name = "Runway", IsVisited = false, Position = positions[14] },
-            new GroundNode{ Name = "Auxiliary Taxiway C35", IsVisited = false, Position = positions[15] },
-            new GroundNode{ Name = "Runway 25", IsVisited = false, Position = positions[16] },
-            new GroundNode{ Name = "Auxiliary Taxiway C36", IsVisited = false, Position = positions[17] },
-            new GroundNode{ Name = "Taxiway A2", IsVisited = false, Position = positions[18] },
-            new GroundNode{ Name = "Taxiway A2", IsVisited = false, Position = positions[19] }
+            new GroundNode{NodeId = 1,  Name = "Gate A", IsVisited = false, Position = positions[0]},
+            new GroundNode{NodeId = 2, Name = "Gate B", IsVisited = false, Position = positions[1]},
+            new GroundNode{NodeId = 3, Name = "Gate C", IsVisited = false, Position = positions[2] },
+            new GroundNode{NodeId = 4, Name = "Gate D", IsVisited = false, Position = positions[3] },
+            new GroundNode{NodeId = 5, Name = "Main Taxiway", IsVisited = false, Position = positions[4] },
+            new GroundNode{NodeId = 6, Name = "Taxiway Chokepoint", IsVisited = false, Position = positions[5] },
+            new GroundNode{NodeId = 7, Name = "Taxiway A2", IsVisited = false, Position = positions[6] },
+            new GroundNode{NodeId = 8, Name = "Taxiway A2", IsVisited = false, Position = positions[7] },
+            new GroundNode{NodeId = 9, Name = "Auxiliary Taxiway C32", IsVisited = false, Position = positions[8] },
+            new GroundNode{NodeId = 10, Name = "Runway 14", IsVisited = false, Position = positions[9] },
+            new GroundNode{NodeId = 11, Name = "Runway", IsVisited = false, Position = positions[10] },
+            new GroundNode{NodeId = 12, Name = "Auxiliary Taxiway C33", IsVisited = false, Position = positions[11] },
+            new GroundNode{NodeId = 13, Name = "Runway", IsVisited = false, Position = positions[12] },
+            new GroundNode{NodeId = 14, Name = "Auxiliary Taxiway C34", IsVisited = false, Position = positions[13] },
+            new GroundNode{NodeId = 15, Name = "Runway", IsVisited = false, Position = positions[14] },
+            new GroundNode{NodeId = 16, Name = "Auxiliary Taxiway C35", IsVisited = false, Position = positions[15] },
+            new GroundNode{NodeId = 17, Name = "Runway 25", IsVisited = false, Position = positions[16] },
+            new GroundNode{NodeId = 18, Name = "Auxiliary Taxiway C36", IsVisited = false, Position = positions[17] },
+            new GroundNode{NodeId = 19, Name = "Taxiway A2", IsVisited = false, Position = positions[18] },
+            new GroundNode{NodeId = 20, Name = "Taxiway A2", IsVisited = false, Position = positions[19] }
             };
 
             /* var nodeEdges = new List<NodeEdge>
@@ -168,7 +167,7 @@ namespace SEP3_TIER3.Database
                  new NodeEdge{EdgeId = 20, NodeId =5}
              };*/
 
-             var nodeEdges = new List<NodeEdge>
+            var nodeEdges = new List<NodeEdge>
             {
                 new NodeEdge{EdgeId = 1, NodeId =9},
                 new NodeEdge{EdgeId = 1, NodeId =10},

@@ -11,7 +11,7 @@ namespace SEP3_TIER3.Model
         [Key]
         [Required]
         [StringLength(20, MinimumLength = 1)]
-        public int NodeId { get; }
+        public int NodeId { get; set; }
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
         public string Name { get; set; }
