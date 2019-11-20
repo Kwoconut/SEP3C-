@@ -1,11 +1,9 @@
-﻿using Dbs.Database;
-using Dbs.Database.DatabaseHandler;
-using Dbs.Model;
-using Dbs.Server;
+﻿using SEP3_TIER3.Database.DatabaseHandler;
+using SEP3_TIER3.Model;
 using System;
 using System.Collections.Generic;
 
-namespace Dbs
+namespace SEP3_TIER3.Server
 {
     class ServerModel
     {

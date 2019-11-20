@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dbs.Server
+namespace SEP3_TIER3.Model
 {
     class GroundNodeToSend
     {

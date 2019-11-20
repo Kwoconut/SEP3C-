@@ -1,11 +1,12 @@
 ﻿
+using SEP3_TIER3.Model;
 using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 using System.Threading;
-namespace Dbs.Server
+namespace SEP3_TIER3.Server
 {
     class ClientHandler
     {

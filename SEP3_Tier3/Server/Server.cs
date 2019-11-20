@@ -1,10 +1,11 @@
-﻿using System;
+﻿using SEP3_TIER3.Database;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
-namespace Dbs.Server
+namespace SEP3_TIER3.Server
 {
     class Server
     {

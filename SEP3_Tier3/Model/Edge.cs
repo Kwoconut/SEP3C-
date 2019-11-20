@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Dbs.Model
+namespace SEP3_TIER3.Model
 {
    public class Edge
     {

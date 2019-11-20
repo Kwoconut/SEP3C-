@@ -1,4 +1,3 @@
-using Dbs.Model;
 using Microsoft.EntityFrameworkCore;
 using SEP3_TIER3.Model;
 using System;
@@ -6,14 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Dbs
+namespace SEP3_TIER3.Database
 {
     public class AppDbContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-6MHDJSO\SQLEXPRESS;Database=Database;Trusted_Connection=True;");
-            //System.Data.Entity.Database.Delete(@"Server=DESKTOP-6MHDJSO\SQLEXPRESS;Database=Database;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-BNE6UIK\SQLEXPRESS;Database=Database;Trusted_Connection=True;");
+            System.Data.Entity.Database.Delete(@"Server=DESKTOP-6MHDJSO\SQLEXPRESS;Database=Database;Trusted_Connection=True;");
         }
 
         public DbSet<Plane> Planes { get; set; }

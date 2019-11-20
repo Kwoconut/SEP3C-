@@ -1,9 +1,9 @@
-﻿using Dbs.Model;
+﻿using SEP3_TIER3.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dbs.Database.DatabaseHandler
+namespace SEP3_TIER3.Database.DatabaseHandler
 {
     interface DbsPersistence
     {

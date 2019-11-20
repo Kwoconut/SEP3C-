@@ -1,9 +1,9 @@
-﻿using Dbs.Model;
+﻿
 using SEP3_TIER3.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace Dbs
+namespace SEP3_TIER3.Database
 {
     class DatabaseInitializer
     {

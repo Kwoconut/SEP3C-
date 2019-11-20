@@ -1,10 +1,10 @@
-﻿using Dbs.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SEP3_TIER3.Model;
 
-namespace Dbs.Database.DatabaseHandler
+namespace SEP3_TIER3.Database.DatabaseHandler
 {
     class DbsHandler : DbsPersistence
     {        
