@@ -26,10 +26,8 @@ namespace SEP3_TIER3.Server
             GroundNodes = new List<GroundNode>();
             NodeEdges = new List<NodeEdge>();
             GroundNodesToSend = new List<GroundNodeToSend>();
-            /*LoadNodesWithEdgeAndPosition();
-            CreateNodesToSend();*/
             
-            LoadPlanesWithPositionAndPlan();
+            /*LoadPlanesWithPositionAndPlan();
             LoadNodesWithEdgeAndPosition();
             LoadNodes();
             LoadEdges();
@@ -65,7 +63,7 @@ namespace SEP3_TIER3.Server
             {
                 Console.WriteLine(node);
             }
-            Console.WriteLine("-----------------------");
+            Console.WriteLine("-----------------------");*/
         }
 
         public void CreateNodesToSend()

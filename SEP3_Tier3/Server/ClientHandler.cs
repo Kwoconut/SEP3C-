@@ -32,11 +32,8 @@ namespace SEP3_TIER3.Server
 
         private void SendPlanes(NetworkStream stream, List<Plane> planes)
         {
-            foreach(Plane plane in planes)
-            {
-                Console.WriteLine(plane);
-            }
-            var json = JsonSerializer.Serialize(planes);
+            var requestBack = new Request(Request.TYPE.REQUESTPLANES, planes);
+            var json = JsonSerializer.Serialize(requestBack);
             int length = Encoding.ASCII.GetByteCount(json);
             byte[] toSendBytes = Encoding.ASCII.GetBytes(json);
             byte[] toSendLengthBytes = BitConverter.GetBytes(length);
@@ -46,6 +43,7 @@ namespace SEP3_TIER3.Server
 
         private void SendNodesWithEdges(NetworkStream stream, List<GroundNodeToSend> nodesToSend)
         {
+            var requestBack = new Request(Request.TYPE.REQUESTGROUNDNODES, nodesToSend);
             var json = JsonSerializer.Serialize(nodesToSend);
             int length = Encoding.ASCII.GetByteCount(json);
             byte[] toSendBytes = Encoding.ASCII.GetBytes(json);
@@ -69,7 +67,7 @@ namespace SEP3_TIER3.Server
                         }
                         SendPlanes(stream, serverModel.Planes);
                     }
-                    if(request.Type == Request.TYPE.REQUESTNODESWITHEDGES)
+                    if(request.Type == Request.TYPE.REQUESTGROUNDNODES)
                     {
                         if (serverModel.GroundNodesToSend.Count == 0)
                         {
@@ -88,8 +86,21 @@ namespace SEP3_TIER3.Server
 
         public class Request
         {
-            public enum TYPE { REQUESTPLANES, REQUESTNODESWITHEDGES}
+            public enum TYPE { REQUESTPLANES, REQUESTGROUNDNODES}
             public TYPE Type { get; }
+            private List<Plane> planes;
+            private List<GroundNodeToSend> nodes;
+
+            public Request(TYPE type, List<Plane> planes)
+            {
+                this.Type = type;
+                this.planes = planes;
+            }
+            public Request(TYPE type, List<GroundNodeToSend> nodes)
+            {
+                this.Type = type;
+                this.nodes = nodes;
+            }
         }
     }
 }
