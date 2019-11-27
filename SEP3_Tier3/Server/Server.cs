@@ -32,7 +32,7 @@ namespace SEP3_TIER3.Server
         }
         public static void Main (String [] args)
         {
-            Server server = new Server { IP = "10.152.194.87", Port = 200};
+            Server server = new Server { IP = "10.152.194.87", Port = 6789};
             server.SetupServer();
         }
     }

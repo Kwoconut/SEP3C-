@@ -41,8 +41,6 @@ namespace SEP3_TIER3.Server
         }
         private void Run()
         {
-            while (true)
-            {
                 NetworkStream stream = client.GetStream();
                 if (serverModel.Planes.Count == 0)
                 {
@@ -55,7 +53,7 @@ namespace SEP3_TIER3.Server
                     serverModel.CreateNodesToSend();
                 }
                 SendNodesWithEdges(stream, serverModel.GroundNodesToSend);
-            }
+            
         }
     }
 }
