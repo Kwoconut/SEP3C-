@@ -121,52 +121,6 @@ namespace SEP3_TIER3.Database
             new GroundNode{NodeId = 20, Name = "Taxiway A2", IsVisited = false, Position = positions[19] }
             };
 
-            /* var nodeEdges = new List<NodeEdge>
-             {
-                 new NodeEdge{EdgeId = 0, NodeId =8},
-                 new NodeEdge{EdgeId = 0, NodeId =9},
-                 new NodeEdge{EdgeId = 1, NodeId =0},
-                 new NodeEdge{EdgeId = 1, NodeId =4},
-                 new NodeEdge{EdgeId = 2, NodeId =10},
-                 new NodeEdge{EdgeId = 2, NodeId =11},
-                 new NodeEdge{EdgeId = 3, NodeId =9},
-                 new NodeEdge{EdgeId = 3, NodeId =10},
-                 new NodeEdge{EdgeId = 4, NodeId =12},
-                 new NodeEdge{EdgeId = 4, NodeId =13},
-                 new NodeEdge{EdgeId = 5, NodeId =10},
-                 new NodeEdge{EdgeId = 5, NodeId =12},
-                 new NodeEdge{EdgeId = 6, NodeId =1},
-                 new NodeEdge{EdgeId = 6, NodeId =4},
-                 new NodeEdge{EdgeId = 7, NodeId =2},
-                 new NodeEdge{EdgeId = 7, NodeId =4},
-                 new NodeEdge{EdgeId = 8, NodeId =3},
-                 new NodeEdge{EdgeId = 8, NodeId =4},
-                 new NodeEdge{EdgeId = 9, NodeId =4},
-                 new NodeEdge{EdgeId = 9, NodeId =5},
-                 new NodeEdge{EdgeId = 10, NodeId =5},
-                 new NodeEdge{EdgeId = 10, NodeId =6},
-                 new NodeEdge{EdgeId = 11, NodeId =5},
-                 new NodeEdge{EdgeId = 11, NodeId =13},
-                 new NodeEdge{EdgeId = 12, NodeId =7},
-                 new NodeEdge{EdgeId = 12, NodeId =6},
-                 new NodeEdge{EdgeId = 13, NodeId =11},
-                 new NodeEdge{EdgeId = 13, NodeId =6},
-                 new NodeEdge{EdgeId = 14, NodeId =7},
-                 new NodeEdge{EdgeId = 14, NodeId =8},
-                 new NodeEdge{EdgeId = 15, NodeId =12},
-                 new NodeEdge{EdgeId = 15, NodeId =14},
-                 new NodeEdge{EdgeId = 16, NodeId =14},
-                 new NodeEdge{EdgeId = 16, NodeId =16},
-                 new NodeEdge{EdgeId = 17, NodeId =16},
-                 new NodeEdge{EdgeId = 17, NodeId =17},
-                 new NodeEdge{EdgeId = 18, NodeId =17},
-                 new NodeEdge{EdgeId = 18, NodeId =18},
-                 new NodeEdge{EdgeId = 19, NodeId =18},
-                 new NodeEdge{EdgeId = 19, NodeId =19},
-                 new NodeEdge{EdgeId = 20, NodeId =19},
-                 new NodeEdge{EdgeId = 20, NodeId =5}
-             };*/
-
             var nodeEdges = new List<NodeEdge>
             {
                 new NodeEdge{EdgeId = 1, NodeId = 9},
