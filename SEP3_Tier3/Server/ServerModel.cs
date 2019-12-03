@@ -13,7 +13,7 @@ namespace SEP3_TIER3.Server
         public List<Edge> Edges { get; set; }
         public List<GroundNode> GroundNodes { get; set; }
         public List<NodeEdge> NodeEdges { get; set; }
-        public List<GroundNodeToSend> GroundNodesToSend { get; set; }
+        public List<GroundNodeDTO> GroundNodesDTO { get; set; }
         private DbsPersistence DatabaseAccess;
 
         public ServerModel()
@@ -25,7 +25,7 @@ namespace SEP3_TIER3.Server
             Edges = new List<Edge>();
             GroundNodes = new List<GroundNode>();
             NodeEdges = new List<NodeEdge>();
-            GroundNodesToSend = new List<GroundNodeToSend>();
+            GroundNodesDTO = new List<GroundNodeDTO>();
 
             //LoadPlanesWithPositionAndPlan();
             LoadNodesWithEdgeAndPosition();
@@ -59,7 +59,7 @@ namespace SEP3_TIER3.Server
                 Console.WriteLine(plan);
             }
             Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXX");
-            foreach (GroundNodeToSend node in GroundNodesToSend)
+            foreach (GroundNodeDTO node in GroundNodesDTO)
             {
                 Console.WriteLine(node);
             }
@@ -71,24 +71,24 @@ namespace SEP3_TIER3.Server
             foreach (NodeEdge nodeEdge in NodeEdges)
             {
                 bool flag = false;
-                foreach (GroundNodeToSend nodeToSend in GroundNodesToSend)
+                foreach (GroundNodeDTO nodeToSend in GroundNodesDTO)
                 {
                     if (nodeEdge.NodeId == nodeToSend.NodeId)
                     {
                         flag = !flag;
-                        nodeToSend.Edges.Add(new EdgeToSend { EdgeId = nodeEdge.Edge.EdgeId, FromNodeIndex = nodeEdge.Edge.FromNodeIndex, ToNodeIndex = nodeEdge.Edge.ToNodeIndex, Length = nodeEdge.Edge.Length });
+                        nodeToSend.Edges.Add(new EdgeDTO { EdgeId = nodeEdge.Edge.EdgeId, FromNodeIndex = nodeEdge.Edge.FromNodeIndex, ToNodeIndex = nodeEdge.Edge.ToNodeIndex, Length = nodeEdge.Edge.Length });
                     }
                 }
                 if (!flag)
                 {
-                    GroundNodesToSend.Add(new GroundNodeToSend { NodeId = nodeEdge.NodeId, Name = nodeEdge.GroundNode.Name, IsVisited = nodeEdge.GroundNode.IsVisited, Position = nodeEdge.GroundNode.Position, Edges = new List<EdgeToSend> { new EdgeToSend { EdgeId = nodeEdge.Edge.EdgeId, FromNodeIndex = nodeEdge.Edge.FromNodeIndex, ToNodeIndex = nodeEdge.Edge.ToNodeIndex, Length = nodeEdge.Edge.Length } } });
+                    GroundNodesDTO.Add(new GroundNodeDTO { NodeId = nodeEdge.NodeId, Name = nodeEdge.GroundNode.Name, IsVisited = nodeEdge.GroundNode.IsVisited, Position = nodeEdge.GroundNode.Position, Edges = new List<EdgeDTO> { new EdgeDTO { EdgeId = nodeEdge.Edge.EdgeId, FromNodeIndex = nodeEdge.Edge.FromNodeIndex, ToNodeIndex = nodeEdge.Edge.ToNodeIndex, Length = nodeEdge.Edge.Length } } });
                 }
             }
 
-            foreach (GroundNodeToSend node in GroundNodesToSend)
+            foreach (GroundNodeDTO node in GroundNodesDTO)
             {
                 node.NodeId = node.NodeId - 1;
-                foreach (EdgeToSend edge in node.Edges)
+                foreach (EdgeDTO edge in node.Edges)
                 {
                     edge.EdgeId = edge.EdgeId - 1;
                 }

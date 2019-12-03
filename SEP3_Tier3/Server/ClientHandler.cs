@@ -30,7 +30,7 @@ namespace SEP3_TIER3.Server
             stream.Write(toSendBytes);
         }
 
-        private void SendNodesWithEdges(NetworkStream stream, List<GroundNodeToSend> nodesToSend)
+        private void SendNodesWithEdges(NetworkStream stream, List<GroundNodeDTO> nodesToSend)
         {
             var json = JsonSerializer.Serialize(nodesToSend);
             int length = Encoding.ASCII.GetByteCount(json);
@@ -47,12 +47,12 @@ namespace SEP3_TIER3.Server
                     serverModel.LoadPlanesWithPositionAndPlan();
                 }
                 SendPlanes(stream, serverModel.Planes);
-                if (serverModel.GroundNodesToSend.Count == 0)
+                if (serverModel.GroundNodesDTO.Count == 0)
                 {
                     serverModel.LoadNodesWithEdgeAndPosition();
                     serverModel.CreateNodesToSend();
                 }
-                SendNodesWithEdges(stream, serverModel.GroundNodesToSend);
+                SendNodesWithEdges(stream, serverModel.GroundNodesDTO);
             
         }
     }
