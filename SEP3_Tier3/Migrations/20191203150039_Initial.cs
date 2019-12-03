@@ -11,8 +11,7 @@ namespace SEP3_TIER3.Migrations
                 name: "Edges",
                 columns: table => new
                 {
-                    EdgeId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EdgeId = table.Column<int>(nullable: false),
                     Length = table.Column<int>(nullable: false),
                     FromNodeIndex = table.Column<int>(nullable: false),
                     ToNodeIndex = table.Column<int>(nullable: false)
@@ -67,8 +66,7 @@ namespace SEP3_TIER3.Migrations
                 name: "GroundNodes",
                 columns: table => new
                 {
-                    NodeId = table.Column<int>(maxLength: 20, nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NodeId = table.Column<int>(maxLength: 20, nullable: false),
                     Name = table.Column<string>(nullable: true),
                     IsVisited = table.Column<bool>(nullable: false),
                     PositionXCoordinate = table.Column<double>(nullable: false),

@@ -27,19 +27,26 @@ namespace SEP3_TIER3.Server
             NodeEdges = new List<NodeEdge>();
             GroundNodesDTO = new List<GroundNodeDTO>();
 
-            //LoadPlanesWithPositionAndPlan();
+            LoadPlanesWithPositionAndPlan();
             LoadNodesWithEdgeAndPosition();
             //LoadNodes();
             //LoadEdges();
             //LoadFlightPlans();
             CreateNodesToSend();
+            
 
             foreach (Plane plane in Planes)
             {
                 Console.WriteLine(plane);
-            }
             Console.WriteLine("-----------------------");
-            foreach (NodeEdge node in NodeEdges)
+            }
+            Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXX");
+            foreach (GroundNodeDTO node in GroundNodesDTO)
+            {
+                Console.WriteLine(node);
+                Console.WriteLine("-----------------------");
+            }
+            /*foreach (NodeEdge node in NodeEdges)
             {
                 Console.WriteLine(node);
             }
@@ -63,7 +70,7 @@ namespace SEP3_TIER3.Server
             {
                 Console.WriteLine(node);
             }
-            Console.WriteLine("-----------------------");
+            Console.WriteLine("-----------------------");*/
         }
 
         public void CreateNodesToSend()
@@ -80,7 +87,7 @@ namespace SEP3_TIER3.Server
                     }
                 }
                 if (!flag)
-                {
+                {                  
                     GroundNodesDTO.Add(new GroundNodeDTO { NodeId = nodeEdge.NodeId, Name = nodeEdge.GroundNode.Name, IsVisited = nodeEdge.GroundNode.IsVisited, Position = nodeEdge.GroundNode.Position, Edges = new List<EdgeDTO> { new EdgeDTO { EdgeId = nodeEdge.Edge.EdgeId, FromNodeIndex = nodeEdge.Edge.FromNodeIndex, ToNodeIndex = nodeEdge.Edge.ToNodeIndex, Length = nodeEdge.Edge.Length } } });
                 }
             }

@@ -10,7 +10,7 @@ using SEP3_TIER3.Database;
 namespace SEP3_TIER3.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191120105443_Initial")]
+    [Migration("20191203150039_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,26 @@ namespace SEP3_TIER3.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Dbs.FlightPlan", b =>
+            modelBuilder.Entity("SEP3_TIER3.Model.Edge", b =>
+                {
+                    b.Property<int>("EdgeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FromNodeIndex")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Length")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ToNodeIndex")
+                        .HasColumnType("int");
+
+                    b.HasKey("EdgeId");
+
+                    b.ToTable("Edges");
+                });
+
+            modelBuilder.Entity("SEP3_TIER3.Model.FlightPlan", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -48,34 +67,11 @@ namespace SEP3_TIER3.Migrations
                     b.ToTable("FlightPlans");
                 });
 
-            modelBuilder.Entity("Dbs.Model.Edge", b =>
-                {
-                    b.Property<int>("EdgeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("FromNodeIndex")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Length")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ToNodeIndex")
-                        .HasColumnType("int");
-
-                    b.HasKey("EdgeId");
-
-                    b.ToTable("Edges");
-                });
-
-            modelBuilder.Entity("Dbs.Model.GroundNode", b =>
+            modelBuilder.Entity("SEP3_TIER3.Model.GroundNode", b =>
                 {
                     b.Property<int>("NodeId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasMaxLength(20)
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasMaxLength(20);
 
                     b.Property<int>("DistanceFromSource")
                         .HasColumnType("int");
@@ -99,7 +95,7 @@ namespace SEP3_TIER3.Migrations
                     b.ToTable("GroundNodes");
                 });
 
-            modelBuilder.Entity("Dbs.Model.NodeEdge", b =>
+            modelBuilder.Entity("SEP3_TIER3.Model.NodeEdge", b =>
                 {
                     b.Property<int>("EdgeId")
                         .HasColumnType("int");
@@ -114,7 +110,7 @@ namespace SEP3_TIER3.Migrations
                     b.ToTable("NodeEdges");
                 });
 
-            modelBuilder.Entity("Dbs.Plane", b =>
+            modelBuilder.Entity("SEP3_TIER3.Model.Plane", b =>
                 {
                     b.Property<string>("CallSign")
                         .HasColumnType("nvarchar(10)")
@@ -155,7 +151,7 @@ namespace SEP3_TIER3.Migrations
                     b.ToTable("Planes");
                 });
 
-            modelBuilder.Entity("Dbs.Position", b =>
+            modelBuilder.Entity("SEP3_TIER3.Model.Position", b =>
                 {
                     b.Property<double>("XCoordinate")
                         .HasColumnType("float");
@@ -181,39 +177,39 @@ namespace SEP3_TIER3.Migrations
                     b.ToTable("Target");
                 });
 
-            modelBuilder.Entity("Dbs.Model.GroundNode", b =>
+            modelBuilder.Entity("SEP3_TIER3.Model.GroundNode", b =>
                 {
-                    b.HasOne("Dbs.Position", "Position")
+                    b.HasOne("SEP3_TIER3.Model.Position", "Position")
                         .WithMany()
                         .HasForeignKey("PositionXCoordinate", "PositionYCoordinate")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Dbs.Model.NodeEdge", b =>
+            modelBuilder.Entity("SEP3_TIER3.Model.NodeEdge", b =>
                 {
-                    b.HasOne("Dbs.Model.Edge", "Edge")
+                    b.HasOne("SEP3_TIER3.Model.Edge", "Edge")
                         .WithMany("NodeEdges")
                         .HasForeignKey("EdgeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Dbs.Model.GroundNode", "GroundNode")
+                    b.HasOne("SEP3_TIER3.Model.GroundNode", "GroundNode")
                         .WithMany("NodeEdges")
                         .HasForeignKey("NodeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Dbs.Plane", b =>
+            modelBuilder.Entity("SEP3_TIER3.Model.Plane", b =>
                 {
-                    b.HasOne("Dbs.FlightPlan", "FlightPlan")
+                    b.HasOne("SEP3_TIER3.Model.FlightPlan", "FlightPlan")
                         .WithMany()
                         .HasForeignKey("FlightPlanId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Dbs.Position", "Position")
+                    b.HasOne("SEP3_TIER3.Model.Position", "Position")
                         .WithMany()
                         .HasForeignKey("PositionXCoordinate", "PositionYCoordinate")
                         .OnDelete(DeleteBehavior.Cascade)
