@@ -55,19 +55,18 @@ namespace SEP3_TIER3.Database
             };
 
             Position positionStated = new Position { XCoordinate = 0, YCoordinate = 114 };
-            Target target = new Target { XCoordinate = 255, YCoordinate = 255 };
 
             var planes = new List<Plane>
             {
-            new Plane{CallSign="Wz3689", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated, Target = target },
-            new Plane{CallSign="Wz4214", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated, Target = target },
-            new Plane{CallSign="Wz1533", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated, Target = target },
-            new Plane{CallSign="Rn1634", Company= "Ryan Air", Model="Airbus A301", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated, Target = target },
-            new Plane{CallSign="Rn3359", Company= "Ryan Air", Model="Airbus A301", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated, Target = target },
-            new Plane{CallSign="Va7433", Company= "Voila", Model="Airbus A320", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated, Target = target },
-            new Plane{CallSign="Va9463", Company= "Voila", Model="Airbus A320", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated, Target = target },
-            new Plane{CallSign="Ta3759", Company= "Turkish Airlines", Model="Boeing 777", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated, Target = target },
-            new Plane{CallSign="Ta6732", Company= "Turkish Airlines", Model="Boeing 777", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated, Target = target }
+            new Plane{CallSign="Wz3689", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
+            new Plane{CallSign="Wz4214", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
+            new Plane{CallSign="Wz1533", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
+            new Plane{CallSign="Rn1634", Company= "Ryan Air", Model="Airbus A301", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
+            new Plane{CallSign="Rn3359", Company= "Ryan Air", Model="Airbus A301", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
+            new Plane{CallSign="Va7433", Company= "Voila", Model="Airbus A320", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
+            new Plane{CallSign="Va9463", Company= "Voila", Model="Airbus A320", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
+            new Plane{CallSign="Ta3759", Company= "Turkish Airlines", Model="Boeing 777", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
+            new Plane{CallSign="Ta6732", Company= "Turkish Airlines", Model="Boeing 777", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated}
             };
             var edges = new List<Edge>
             {

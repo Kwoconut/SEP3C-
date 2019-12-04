@@ -30,7 +30,6 @@ namespace SEP3_TIER3.Database
             modelBuilder.Entity<Edge>().Property(p => p.EdgeId).ValueGeneratedNever();
             modelBuilder.Entity<FlightPlan>().HasKey("Id");
             modelBuilder.Entity<Position>().HasKey("XCoordinate", "YCoordinate");
-            modelBuilder.Entity<Target>().HasKey("XCoordinate", "YCoordinate");
 
             modelBuilder.Entity<NodeEdge>()
                 .HasKey(nodeEdge => new { nodeEdge.EdgeId, nodeEdge.NodeId });

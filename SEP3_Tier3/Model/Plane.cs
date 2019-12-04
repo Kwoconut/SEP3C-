@@ -25,9 +25,6 @@ namespace SEP3_TIER3.Model
         [Required]
         public Position Position { get; set; }
 
-        [Required]
-        public Target Target { get; set; }
-
         public string Status { get; set; } = "In air";
 
         public override string ToString()
