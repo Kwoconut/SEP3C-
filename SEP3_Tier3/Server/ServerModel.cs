@@ -28,20 +28,22 @@ namespace SEP3_TIER3.Server
             GroundNodesDTO = new List<GroundNodeDTO>();
 
             LoadPlanesWithPositionAndPlan();
-            LoadNodesWithEdgeAndPosition();
-            //LoadNodes();
-            //LoadEdges();
+            //LoadNodesWithEdgeAndPosition();
+            LoadNodes();
+            LoadEdges();
             //LoadFlightPlans();
-            CreateNodesToSend();
-            
-
-            foreach (Plane plane in Planes)
+            //CreateNodesToSend();
+            foreach(Plane plane in Planes)
             {
                 Console.WriteLine(plane);
-            Console.WriteLine("-----------------------");
+                Console.WriteLine("-----------------------");
             }
-            Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXX");
-            foreach (GroundNodeDTO node in GroundNodesDTO)
+            foreach (Edge edge in Edges)
+            {
+                Console.WriteLine(edge);
+                Console.WriteLine("-----------------------");
+            }
+            foreach (GroundNode node in GroundNodes)
             {
                 Console.WriteLine(node);
                 Console.WriteLine("-----------------------");

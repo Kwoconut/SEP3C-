@@ -43,10 +43,11 @@ namespace SEP3_TIER3.Database.DatabaseHandler
         {
             using (var context = new AppDbContext())
             {
-                if (!(context.GroundNodes.Any()))
+                if (!(context.GroundNodes.Any() && context.Positions.Any()))
                 {   
-                    throw new Exception("No data in GroundNodes");
+                    throw new Exception("No data in GroundNodes and Position");
                 }
+                List<Position> positions = context.Positions.ToList();
                 List<GroundNode> groundNodes = context.GroundNodes.ToList();
                 return groundNodes;
             }
