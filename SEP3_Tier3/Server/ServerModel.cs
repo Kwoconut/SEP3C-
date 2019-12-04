@@ -138,6 +138,10 @@ namespace SEP3_TIER3.Server
             {
                 Console.WriteLine(e);
             }
+            foreach (GroundNode node in GroundNodes)
+            {
+                node.NodeId = node.NodeId - 1;
+            }
         }
 
         public void LoadNodesWithEdgeAndPosition()
