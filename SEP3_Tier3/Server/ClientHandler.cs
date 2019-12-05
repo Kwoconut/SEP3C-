@@ -32,7 +32,7 @@ namespace SEP3_TIER3.Server
 
         private void SendPlanes(NetworkStream stream, List<Plane> planes)
         {
-            Request request = new Request { type = Request.Type.RESPONSEPLANES, planesToSend = planes };
+            Request request = new Request { Type = "RESPONSEPLANES", Planes = planes };
             var json = JsonSerializer.Serialize(request);
             int length = Encoding.ASCII.GetByteCount(json);
             byte[] toSendBytes = Encoding.ASCII.GetBytes(json);
@@ -52,7 +52,7 @@ namespace SEP3_TIER3.Server
         }*/
         private void SendNodesWithPosition(NetworkStream stream, List<GroundNode> nodesToSend)
         {
-            Request request = new Request { type = Request.Type.RESPONSENODES, nodesToSend = nodesToSend };
+            Request request = new Request { Type = "RESPONSENODES", Nodes = nodesToSend };
             var json = JsonSerializer.Serialize(request);
             int length = Encoding.ASCII.GetByteCount(json);
             byte[] toSendBytes = Encoding.ASCII.GetBytes(json);
@@ -62,7 +62,7 @@ namespace SEP3_TIER3.Server
         }
         private void SendEdges(NetworkStream stream, List<Edge> edgesToSend)
         {
-            Request request = new Request { type = Request.Type.RESPONSEEDGES, edgesToSend = edgesToSend };
+            Request request = new Request { Type = "RESPONSEEDGES", Edges = edgesToSend };
             var json = JsonSerializer.Serialize(request);
             int length = Encoding.ASCII.GetByteCount(json);
             byte[] toSendBytes = Encoding.ASCII.GetBytes(json);
@@ -72,22 +72,22 @@ namespace SEP3_TIER3.Server
         }
         private void Run()
         {
-            while(true)
+            while (true)
             {
                 NetworkStream stream = client.GetStream();
                 Request request = ReceiveRequest(stream);
-                switch(request.type)
+                switch (request.Type)
                 {
-                    case Request.Type.REQUESTPLANES:
+                    case "REQUESTPLANES":
                         {
                             if (serverModel.Planes.Count == 0)
                             {
                                 serverModel.LoadPlanesWithPositionAndPlan();
-                                SendPlanes(stream, serverModel.Planes);
                             }
+                            SendPlanes(stream, serverModel.Planes);
                             break;
                         }
-                    case Request.Type.REQUESTNODES:
+                    case "REQUESTNODES":
                         {
                             if (serverModel.GroundNodes.Count == 0)
                             {
@@ -96,7 +96,7 @@ namespace SEP3_TIER3.Server
                             SendNodesWithPosition(stream, serverModel.GroundNodes);
                             break;
                         }
-                    case Request.Type.REQUESTEDGES:
+                    case "REQUESTEDGES":
                         {
                             if (serverModel.Edges.Count == 0)
                             {
@@ -115,12 +115,11 @@ namespace SEP3_TIER3.Server
     }
 
     public class Request
-    { 
-        public enum Type { REQUESTPLANES, REQUESTNODES, REQUESTEDGES, RESPONSEPLANES, RESPONSENODES, RESPONSEEDGES}
-        public Type type;
-        public List<Plane> planesToSend { get; set; }
-        public List<Edge> edgesToSend { get; set; }
-        public List<GroundNode> nodesToSend { get; set; }
+    {
+        public string Type { get; set; }
+        public List<Plane> Planes { get; set; }
+        public List<Edge> Edges { get; set; }
+        public List<GroundNode> Nodes { get; set; }
     }
 
 

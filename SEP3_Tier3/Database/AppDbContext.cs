@@ -11,7 +11,7 @@ namespace SEP3_TIER3.Database
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-6MHDJSO\SQLEXPRESS;Database=Database;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-VF4OOIP\SQLEXPRESS;Database=Database;Trusted_Connection=True;");
             //System.Data.Entity.Database.Delete(@"Server=DESKTOP-6MHDJSO\SQLEXPRESS;Database=Database;Trusted_Connection=True;");
         }
 
