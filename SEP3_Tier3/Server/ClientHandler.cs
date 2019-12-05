@@ -19,10 +19,21 @@ namespace SEP3_TIER3.Server
             Thread thread = new Thread(new ThreadStart(Run));
             thread.Start();
         }
+        private Request ReceiveRequest(NetworkStream stream)
+        {
+            byte[] receiveLengthBytes = new byte[4];
+            stream.Read(receiveLengthBytes);
+            int receiveLength = BitConverter.ToInt32(receiveLengthBytes, 0);
+            byte[] receiveBytes = new byte[receiveLength];
+            stream.Read(receiveBytes);
+            String rcv = Encoding.ASCII.GetString(receiveBytes);
+            return JsonSerializer.Deserialize<Request>(rcv);
+        }
 
         private void SendPlanes(NetworkStream stream, List<Plane> planes)
         {
-            var json = JsonSerializer.Serialize(planes);
+            Request request = new Request { type = Request.Type.RESPONSEPLANES, planesToSend = planes };
+            var json = JsonSerializer.Serialize(request);
             int length = Encoding.ASCII.GetByteCount(json);
             byte[] toSendBytes = Encoding.ASCII.GetBytes(json);
             byte[] toSendLengthBytes = BitConverter.GetBytes(length);
@@ -30,7 +41,7 @@ namespace SEP3_TIER3.Server
             stream.Write(toSendBytes);
         }
 
-        private void SendNodesWithEdges(NetworkStream stream, List<GroundNodeDTO> nodesToSend)
+        /*private void SendNodesWithEdges(NetworkStream stream, List<GroundNodeDTO> nodesToSend)
         {
             var json = JsonSerializer.Serialize(nodesToSend);
             int length = Encoding.ASCII.GetByteCount(json);
@@ -38,10 +49,11 @@ namespace SEP3_TIER3.Server
             byte[] toSendLengthBytes = BitConverter.GetBytes(length);
             stream.Write(toSendLengthBytes);
             stream.Write(toSendBytes);
-        }
+        }*/
         private void SendNodesWithPosition(NetworkStream stream, List<GroundNode> nodesToSend)
         {
-            var json = JsonSerializer.Serialize(nodesToSend);
+            Request request = new Request { type = Request.Type.RESPONSENODES, nodesToSend = nodesToSend };
+            var json = JsonSerializer.Serialize(request);
             int length = Encoding.ASCII.GetByteCount(json);
             byte[] toSendBytes = Encoding.ASCII.GetBytes(json);
             byte[] toSendLengthBytes = BitConverter.GetBytes(length);
@@ -50,7 +62,8 @@ namespace SEP3_TIER3.Server
         }
         private void SendEdges(NetworkStream stream, List<Edge> edgesToSend)
         {
-            var json = JsonSerializer.Serialize(edgesToSend);
+            Request request = new Request { type = Request.Type.RESPONSEEDGES, edgesToSend = edgesToSend };
+            var json = JsonSerializer.Serialize(request);
             int length = Encoding.ASCII.GetByteCount(json);
             byte[] toSendBytes = Encoding.ASCII.GetBytes(json);
             byte[] toSendLengthBytes = BitConverter.GetBytes(length);
@@ -59,22 +72,56 @@ namespace SEP3_TIER3.Server
         }
         private void Run()
         {
-            NetworkStream stream = client.GetStream();
-            if (serverModel.Planes.Count == 0)
+            while(true)
             {
-                serverModel.LoadPlanesWithPositionAndPlan();
+                NetworkStream stream = client.GetStream();
+                Request request = ReceiveRequest(stream);
+                switch(request.type)
+                {
+                    case Request.Type.REQUESTPLANES:
+                        {
+                            if (serverModel.Planes.Count == 0)
+                            {
+                                serverModel.LoadPlanesWithPositionAndPlan();
+                                SendPlanes(stream, serverModel.Planes);
+                            }
+                            break;
+                        }
+                    case Request.Type.REQUESTNODES:
+                        {
+                            if (serverModel.GroundNodes.Count == 0)
+                            {
+                                serverModel.LoadNodes();
+                            }
+                            SendNodesWithPosition(stream, serverModel.GroundNodes);
+                            break;
+                        }
+                    case Request.Type.REQUESTEDGES:
+                        {
+                            if (serverModel.Edges.Count == 0)
+                            {
+                                serverModel.LoadEdges();
+                            }
+                            SendEdges(stream, serverModel.Edges);
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
             }
-            SendPlanes(stream, serverModel.Planes);
-            if (serverModel.GroundNodes.Count == 0)
-            {
-                serverModel.LoadNodes();
-            }
-            SendNodesWithPosition(stream, serverModel.GroundNodes);
-            if (serverModel.Edges.Count == 0)
-            {
-                serverModel.LoadEdges();
-            }
-            SendEdges(stream, serverModel.Edges);
         }
     }
+
+    public class Request
+    { 
+        public enum Type { REQUESTPLANES, REQUESTNODES, REQUESTEDGES, RESPONSEPLANES, RESPONSENODES, RESPONSEEDGES}
+        public Type type;
+        public List<Plane> planesToSend { get; set; }
+        public List<Edge> edgesToSend { get; set; }
+        public List<GroundNode> nodesToSend { get; set; }
+    }
+
+
 }
