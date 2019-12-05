@@ -72,9 +72,9 @@ namespace SEP3_TIER3.Server
         }
         private void Run()
         {
+            NetworkStream stream = client.GetStream();
             while (true)
             {
-                NetworkStream stream = client.GetStream();
                 Request request = ReceiveRequest(stream);
                 switch (request.Type)
                 {
