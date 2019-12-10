@@ -32,14 +32,14 @@ namespace SEP3_TIER3.Database.DatabaseHandler
                     throw new Exception("No data in NodeEdges / Positions / GroundNodes / Edges");
                 }
                 List<Position> positions = context.Positions.ToList();
-                List<GroundNode> groundNodes = context.GroundNodes.ToList();
+                List<Node> groundNodes = context.GroundNodes.ToList();
                 List<Edge> edges = context.Edges.ToList();
                 List<NodeEdge> nodes = context.NodeEdges.ToList();
                 return nodes;
             }
         }
 
-        public List<GroundNode> LoadGroundNodes()
+        public List<Node> LoadGroundNodes()
         {
             using (var context = new AppDbContext())
             {
@@ -48,7 +48,7 @@ namespace SEP3_TIER3.Database.DatabaseHandler
                     throw new Exception("No data in GroundNodes and Position");
                 }
                 List<Position> positions = context.Positions.ToList();
-                List<GroundNode> groundNodes = context.GroundNodes.ToList();
+                List<Node> groundNodes = context.GroundNodes.ToList();
                 return groundNodes;
             }
         }

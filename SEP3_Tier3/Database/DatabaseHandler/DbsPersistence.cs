@@ -9,7 +9,7 @@ namespace SEP3_TIER3.Database.DatabaseHandler
     {
         public List<Plane> LoadPlanesWithPositionAndPlan();
         public List<NodeEdge> LoadNodesWithEdgeAndPosition();
-        public List<GroundNode> LoadGroundNodes();
+        public List<Node> LoadGroundNodes();
         public List<Edge> LoadEdges();
         public List<FlightPlan> LoadFlightPlans();
     }

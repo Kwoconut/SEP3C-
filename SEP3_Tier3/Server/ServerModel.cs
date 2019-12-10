@@ -11,9 +11,9 @@ namespace SEP3_TIER3.Server
         public List<FlightPlan> FlightPlans { get; set; }
         public List<Plane> Planes { get; set; }
         public List<Edge> Edges { get; set; }
-        public List<GroundNode> GroundNodes { get; set; }
+        public List<Node> GroundNodes { get; set; }
         public List<NodeEdge> NodeEdges { get; set; }
-        public List<GroundNodeDTO> GroundNodesDTO { get; set; }
+        public List<NodeDTO> GroundNodesDTO { get; set; }
         private DbsPersistence DatabaseAccess;
 
         public ServerModel()
@@ -23,9 +23,9 @@ namespace SEP3_TIER3.Server
             FlightPlans = new List<FlightPlan>();
             Planes = new List<Plane>();
             Edges = new List<Edge>();
-            GroundNodes = new List<GroundNode>();
+            GroundNodes = new List<Node>();
             NodeEdges = new List<NodeEdge>();
-            GroundNodesDTO = new List<GroundNodeDTO>();
+            GroundNodesDTO = new List<NodeDTO>();
 
             LoadPlanesWithPositionAndPlan();
             //LoadNodesWithEdgeAndPosition();
@@ -43,7 +43,7 @@ namespace SEP3_TIER3.Server
                 Console.WriteLine(edge);
                 Console.WriteLine("-----------------------");
             }
-            foreach (GroundNode node in GroundNodes)
+            foreach (Node node in GroundNodes)
             {
                 Console.WriteLine(node);
                 Console.WriteLine("-----------------------");
@@ -80,7 +80,7 @@ namespace SEP3_TIER3.Server
             foreach (NodeEdge nodeEdge in NodeEdges)
             {
                 bool flag = false;
-                foreach (GroundNodeDTO nodeToSend in GroundNodesDTO)
+                foreach (NodeDTO nodeToSend in GroundNodesDTO)
                 {
                     if (nodeEdge.NodeId == nodeToSend.NodeId)
                     {
@@ -90,11 +90,11 @@ namespace SEP3_TIER3.Server
                 }
                 if (!flag)
                 {                  
-                    GroundNodesDTO.Add(new GroundNodeDTO { NodeId = nodeEdge.NodeId, Name = nodeEdge.GroundNode.Name, IsVisited = nodeEdge.GroundNode.IsVisited, Position = nodeEdge.GroundNode.Position, Edges = new List<EdgeDTO> { new EdgeDTO { EdgeId = nodeEdge.Edge.EdgeId, FromNodeIndex = nodeEdge.Edge.FromNodeIndex, ToNodeIndex = nodeEdge.Edge.ToNodeIndex, Length = nodeEdge.Edge.Length } } });
+                    GroundNodesDTO.Add(new NodeDTO { NodeId = nodeEdge.NodeId, Name = nodeEdge.GroundNode.Name, IsVisited = nodeEdge.GroundNode.IsVisited, Position = nodeEdge.GroundNode.Position, Edges = new List<EdgeDTO> { new EdgeDTO { EdgeId = nodeEdge.Edge.EdgeId, FromNodeIndex = nodeEdge.Edge.FromNodeIndex, ToNodeIndex = nodeEdge.Edge.ToNodeIndex, Length = nodeEdge.Edge.Length } } });
                 }
             }
 
-            foreach (GroundNodeDTO node in GroundNodesDTO)
+            foreach (NodeDTO node in GroundNodesDTO)
             {
                 node.NodeId = node.NodeId - 1;
                 foreach (EdgeDTO edge in node.Edges)
@@ -138,7 +138,7 @@ namespace SEP3_TIER3.Server
             {
                 Console.WriteLine(e);
             }
-            foreach (GroundNode node in GroundNodes)
+            foreach (Node node in GroundNodes)
             {
                 node.NodeId = node.NodeId - 1;
             }

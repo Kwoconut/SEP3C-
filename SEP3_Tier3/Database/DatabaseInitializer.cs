@@ -42,16 +42,16 @@ namespace SEP3_TIER3.Database
 
             var flightPlans = new List<FlightPlan>
             {
-            new FlightPlan{StartLocation="India", EndLocation="Alborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 1, 10, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="Japan", EndLocation="Alborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 1, 10, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="Alborg", EndLocation="Iasi", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 4, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="Romania", EndLocation="Alborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 9, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="Alabama", EndLocation="Alborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 13, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="Germany", EndLocation="Alborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 17, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="Alborg", EndLocation="Alborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 21, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="China", EndLocation="Alborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 25, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="USA", EndLocation="Alborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 28, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="Vatican", EndLocation="Alborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 30, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
+            new FlightPlan{StartLocation="Sibiu", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 1, 10, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
+            new FlightPlan{StartLocation="Copenhagen", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 1, 10, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
+            new FlightPlan{StartLocation="Aalborg", EndLocation="Iasi", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 4, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
+            new FlightPlan{StartLocation="Berlin", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 9, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
+            new FlightPlan{StartLocation="London", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 13, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
+            new FlightPlan{StartLocation="Roma", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 17, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
+            new FlightPlan{StartLocation="Lisbon", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 21, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
+            new FlightPlan{StartLocation="Bucharest", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 25, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
+            new FlightPlan{StartLocation="Detroit", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 28, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
+            new FlightPlan{StartLocation="Milano", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 30, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
             };
 
             Position positionStated = new Position { XCoordinate = 0, YCoordinate = 114 };
@@ -59,14 +59,14 @@ namespace SEP3_TIER3.Database
             var planes = new List<Plane>
             {
             new Plane{CallSign="Wz3689", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
-            new Plane{CallSign="Wz4214", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
-            new Plane{CallSign="Wz1533", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
-            new Plane{CallSign="Rn1634", Company= "Ryan Air", Model="Airbus A301", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
-            new Plane{CallSign="Rn3359", Company= "Ryan Air", Model="Airbus A301", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
-            new Plane{CallSign="Va7433", Company= "Voila", Model="Airbus A320", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
-            new Plane{CallSign="Va9463", Company= "Voila", Model="Airbus A320", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
-            new Plane{CallSign="Ta3759", Company= "Turkish Airlines", Model="Boeing 777", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
-            new Plane{CallSign="Ta6732", Company= "Turkish Airlines", Model="Boeing 777", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated}
+            new Plane{CallSign="Wz4214", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[1], Position = positionStated},
+            new Plane{CallSign="Wz1533", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[2], Position = positionStated},
+            new Plane{CallSign="Rn1634", Company= "Ryan Air", Model="Airbus A301", Status="In Air", FlightPlan = flightPlans[3], Position = positionStated},
+            new Plane{CallSign="Rn3359", Company= "Ryan Air", Model="Airbus A301", Status="In Air", FlightPlan = flightPlans[4], Position = positionStated},
+            new Plane{CallSign="Va7433", Company= "Voila", Model="Airbus A320", Status="In Air", FlightPlan = flightPlans[5], Position = positionStated},
+            new Plane{CallSign="Va9463", Company= "Voila", Model="Airbus A320", Status="In Air", FlightPlan = flightPlans[6], Position = positionStated},
+            new Plane{CallSign="Ta3759", Company= "Turkish Airlines", Model="Boeing 777", Status="In Air", FlightPlan = flightPlans[7], Position = positionStated},
+            new Plane{CallSign="Ta6732", Company= "Turkish Airlines", Model="Boeing 777", Status="In Air", FlightPlan = flightPlans[8], Position = positionStated}
             };
             var edges = new List<Edge>
             {
@@ -96,28 +96,28 @@ namespace SEP3_TIER3.Database
             };
 
 
-            var groundNodes = new List<GroundNode>
+            var nodes = new List<Node>
             {
-            new GroundNode{NodeId = 1,  Name = "Gate A", IsVisited = false, Position = positions[0]},
-            new GroundNode{NodeId = 2, Name = "Gate B", IsVisited = false, Position = positions[1]},
-            new GroundNode{NodeId = 3, Name = "Gate C", IsVisited = false, Position = positions[2] },
-            new GroundNode{NodeId = 4, Name = "Gate D", IsVisited = false, Position = positions[3] },
-            new GroundNode{NodeId = 5, Name = "Main Taxiway", IsVisited = false, Position = positions[4] },
-            new GroundNode{NodeId = 6, Name = "Taxiway Chokepoint", IsVisited = false, Position = positions[5] },
-            new GroundNode{NodeId = 7, Name = "Taxiway A2", IsVisited = false, Position = positions[6] },
-            new GroundNode{NodeId = 8, Name = "Taxiway A2", IsVisited = false, Position = positions[7] },
-            new GroundNode{NodeId = 9, Name = "Auxiliary Taxiway C32", IsVisited = false, Position = positions[8] },
-            new GroundNode{NodeId = 10, Name = "Runway 14", IsVisited = false, Position = positions[9] },
-            new GroundNode{NodeId = 11, Name = "Runway", IsVisited = false, Position = positions[10] },
-            new GroundNode{NodeId = 12, Name = "Auxiliary Taxiway C33", IsVisited = false, Position = positions[11] },
-            new GroundNode{NodeId = 13, Name = "Runway", IsVisited = false, Position = positions[12] },
-            new GroundNode{NodeId = 14, Name = "Auxiliary Taxiway C34", IsVisited = false, Position = positions[13] },
-            new GroundNode{NodeId = 15, Name = "Runway", IsVisited = false, Position = positions[14] },
-            new GroundNode{NodeId = 16, Name = "Auxiliary Taxiway C35", IsVisited = false, Position = positions[15] },
-            new GroundNode{NodeId = 17, Name = "Runway 25", IsVisited = false, Position = positions[16] },
-            new GroundNode{NodeId = 18, Name = "Auxiliary Taxiway C36", IsVisited = false, Position = positions[17] },
-            new GroundNode{NodeId = 19, Name = "Taxiway A2", IsVisited = false, Position = positions[18] },
-            new GroundNode{NodeId = 20, Name = "Taxiway A2", IsVisited = false, Position = positions[19] }
+            new Node{NodeId = 1,  Name = "Gate A", IsVisited = false, Position = positions[0], isGroundNode = false},
+            new Node{NodeId = 2, Name = "Gate B", IsVisited = false, Position = positions[1], isGroundNode = false},
+            new Node{NodeId = 3, Name = "Gate C", IsVisited = false, Position = positions[2], isGroundNode = false },
+            new Node{NodeId = 4, Name = "Gate D", IsVisited = false, Position = positions[3], isGroundNode = false },
+            new Node{NodeId = 5, Name = "Main Taxiway", IsVisited = false, Position = positions[4], isGroundNode = false },
+            new Node{NodeId = 6, Name = "Taxiway Chokepoint", IsVisited = false, Position = positions[5], isGroundNode = false },
+            new Node{NodeId = 7, Name = "Taxiway A2", IsVisited = false, Position = positions[6], isGroundNode = false },
+            new Node{NodeId = 8, Name = "Taxiway A2", IsVisited = false, Position = positions[7], isGroundNode = false },
+            new Node{NodeId = 9, Name = "Auxiliary Taxiway C32", IsVisited = false, Position = positions[8], isGroundNode = false },
+            new Node{NodeId = 10, Name = "Runway 14", IsVisited = false, Position = positions[9], isGroundNode = false },
+            new Node{NodeId = 11, Name = "Runway", IsVisited = false, Position = positions[10], isGroundNode = false },
+            new Node{NodeId = 12, Name = "Auxiliary Taxiway C33", IsVisited = false, Position = positions[11], isGroundNode = false },
+            new Node{NodeId = 13, Name = "Runway", IsVisited = false, Position = positions[12], isGroundNode = false },
+            new Node{NodeId = 14, Name = "Auxiliary Taxiway C34", IsVisited = false, Position = positions[13], isGroundNode = false },
+            new Node{NodeId = 15, Name = "Runway", IsVisited = false, Position = positions[14], isGroundNode = false },
+            new Node{NodeId = 16, Name = "Auxiliary Taxiway C35", IsVisited = false, Position = positions[15], isGroundNode = false },
+            new Node{NodeId = 17, Name = "Runway 25", IsVisited = false, Position = positions[16], isGroundNode = false },
+            new Node{NodeId = 18, Name = "Auxiliary Taxiway C36", IsVisited = false, Position = positions[17], isGroundNode = false },
+            new Node{NodeId = 19, Name = "Taxiway A2", IsVisited = false, Position = positions[18], isGroundNode = false },
+            new Node{NodeId = 20, Name = "Taxiway A2", IsVisited = false, Position = positions[19], isGroundNode = false }
             };
 
             var nodeEdges = new List<NodeEdge>
@@ -187,7 +187,7 @@ namespace SEP3_TIER3.Database
             }
             context.SaveChanges();
 
-            foreach (GroundNode groundNode in groundNodes)
+            foreach (Node groundNode in nodes)
             {
                 context.Add(groundNode);
             }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SEP3_TIER3.Model
 {
-    public class GroundNode
+    public class Node
     {
         [Key]
         [Required]
@@ -20,13 +20,14 @@ namespace SEP3_TIER3.Model
         [Required]
         public Position Position { get; set; }
         public int DistanceFromSource { get; set; } = Int32.MaxValue;
+        public bool isGroundNode { get; set; }
 
         [Required]
         public ICollection<NodeEdge> NodeEdges { get; set; }
 
         public override string ToString()
         {
-            return $"NodeId: {NodeId} \nName: {Name} \nIsVisited {IsVisited} \nPosition {Position} \nDistanceFromSource {DistanceFromSource} ";
+            return $"NodeId: {NodeId} \nName: {Name} \nIsVisited {IsVisited} \nPosition {Position} \nDistanceFromSource {DistanceFromSource}\nIs GroundNode {isGroundNode}";
         }
     }
 }

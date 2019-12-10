@@ -19,13 +19,13 @@ namespace SEP3_TIER3.Database
         public DbSet<FlightPlan> FlightPlans { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<Edge> Edges { get; set; }
-        public DbSet<GroundNode> GroundNodes { get; set; }
+        public DbSet<Node> GroundNodes { get; set; }
         public DbSet<NodeEdge> NodeEdges { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<GroundNode>().HasKey("NodeId");
-            modelBuilder.Entity<GroundNode>().Property(p => p.NodeId).ValueGeneratedNever();
+            modelBuilder.Entity<Node>().HasKey("NodeId");
+            modelBuilder.Entity<Node>().Property(p => p.NodeId).ValueGeneratedNever();
             modelBuilder.Entity<Edge>().HasKey("EdgeId");
             modelBuilder.Entity<Edge>().Property(p => p.EdgeId).ValueGeneratedNever();
             modelBuilder.Entity<FlightPlan>().HasKey("Id");

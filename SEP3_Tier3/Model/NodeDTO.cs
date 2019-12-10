@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SEP3_TIER3.Model
 {
-    class GroundNodeDTO
+    class NodeDTO
     {
         public int NodeId { get; set; }
         public string Name { get; set; }

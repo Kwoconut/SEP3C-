@@ -50,7 +50,7 @@ namespace SEP3_TIER3.Server
             stream.Write(toSendLengthBytes);
             stream.Write(toSendBytes);
         }*/
-        private void SendNodesWithPosition(NetworkStream stream, List<GroundNode> nodesToSend)
+        private void SendNodesWithPosition(NetworkStream stream, List<Node> nodesToSend)
         {
             Request request = new Request { Type = "RESPONSENODES", Nodes = nodesToSend };
             var json = JsonSerializer.Serialize(request);
@@ -119,7 +119,7 @@ namespace SEP3_TIER3.Server
         public string Type { get; set; }
         public List<Plane> Planes { get; set; }
         public List<Edge> Edges { get; set; }
-        public List<GroundNode> Nodes { get; set; }
+        public List<Node> Nodes { get; set; }
     }
 
 

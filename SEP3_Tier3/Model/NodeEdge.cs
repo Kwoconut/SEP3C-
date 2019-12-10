@@ -13,7 +13,7 @@ namespace SEP3_TIER3.Model
 
         public int NodeId { get; set; }
 
-        public GroundNode GroundNode { get; set; }
+        public Node GroundNode { get; set; }
 
         public override string ToString()
         {

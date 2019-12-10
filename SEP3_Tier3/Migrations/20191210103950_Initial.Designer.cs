@@ -10,7 +10,7 @@ using SEP3_TIER3.Database;
 namespace SEP3_TIER3.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191203153849_Initial")]
+    [Migration("20191210103950_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,7 +67,7 @@ namespace SEP3_TIER3.Migrations
                     b.ToTable("FlightPlans");
                 });
 
-            modelBuilder.Entity("SEP3_TIER3.Model.GroundNode", b =>
+            modelBuilder.Entity("SEP3_TIER3.Model.Node", b =>
                 {
                     b.Property<int>("NodeId")
                         .HasColumnType("int")
@@ -87,6 +87,9 @@ namespace SEP3_TIER3.Migrations
 
                     b.Property<double>("PositionYCoordinate")
                         .HasColumnType("float");
+
+                    b.Property<bool>("isGroundNode")
+                        .HasColumnType("bit");
 
                     b.HasKey("NodeId");
 
@@ -134,19 +137,11 @@ namespace SEP3_TIER3.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("TargetXCoordinate")
-                        .HasColumnType("float");
-
-                    b.Property<double>("TargetYCoordinate")
-                        .HasColumnType("float");
-
                     b.HasKey("CallSign");
 
                     b.HasIndex("FlightPlanId");
 
                     b.HasIndex("PositionXCoordinate", "PositionYCoordinate");
-
-                    b.HasIndex("TargetXCoordinate", "TargetYCoordinate");
 
                     b.ToTable("Planes");
                 });
@@ -164,20 +159,7 @@ namespace SEP3_TIER3.Migrations
                     b.ToTable("Positions");
                 });
 
-            modelBuilder.Entity("SEP3_TIER3.Model.Target", b =>
-                {
-                    b.Property<double>("XCoordinate")
-                        .HasColumnType("float");
-
-                    b.Property<double>("YCoordinate")
-                        .HasColumnType("float");
-
-                    b.HasKey("XCoordinate", "YCoordinate");
-
-                    b.ToTable("Target");
-                });
-
-            modelBuilder.Entity("SEP3_TIER3.Model.GroundNode", b =>
+            modelBuilder.Entity("SEP3_TIER3.Model.Node", b =>
                 {
                     b.HasOne("SEP3_TIER3.Model.Position", "Position")
                         .WithMany()
@@ -194,7 +176,7 @@ namespace SEP3_TIER3.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SEP3_TIER3.Model.GroundNode", "GroundNode")
+                    b.HasOne("SEP3_TIER3.Model.Node", "GroundNode")
                         .WithMany("NodeEdges")
                         .HasForeignKey("NodeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -212,12 +194,6 @@ namespace SEP3_TIER3.Migrations
                     b.HasOne("SEP3_TIER3.Model.Position", "Position")
                         .WithMany()
                         .HasForeignKey("PositionXCoordinate", "PositionYCoordinate")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SEP3_TIER3.Model.Target", "Target")
-                        .WithMany()
-                        .HasForeignKey("TargetXCoordinate", "TargetYCoordinate")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
