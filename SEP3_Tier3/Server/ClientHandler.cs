@@ -82,18 +82,18 @@ namespace SEP3_TIER3.Server
                         {
                             if (serverModel.Planes.Count == 0)
                             {
-                                serverModel.LoadPlanesWithPositionAndPlan();
+                                serverModel.LoadPlanes();
                             }
                             SendPlanes(stream, serverModel.Planes);
                             break;
                         }
                     case "REQUESTNODES":
                         {
-                            if (serverModel.GroundNodes.Count == 0)
+                            if (serverModel.Nodes.Count == 0)
                             {
                                 serverModel.LoadNodes();
                             }
-                            SendNodesWithPosition(stream, serverModel.GroundNodes);
+                            SendNodesWithPosition(stream, serverModel.Nodes);
                             break;
                         }
                     case "REQUESTEDGES":

@@ -1,5 +1,4 @@
 ﻿using SEP3_TIER3.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 namespace SEP3_TIER3.Database
@@ -10,7 +9,7 @@ namespace SEP3_TIER3.Database
         {
 
             context.Database.EnsureCreated();
-            if (context.Planes.Any() && context.Positions.Any() && context.FlightPlans.Any() && context.Edges.Any() && context.GroundNodes.Any() && context.NodeEdges.Any())
+            if (context.Nodes.Any() && context.Planes.Any() && context.Positions.Any() && context.FlightPlans.Any() && context.Edges.Any() && context.NodeEdges.Any() && context.FlightDates.Any())
             {
                 return;
             }
@@ -39,19 +38,24 @@ namespace SEP3_TIER3.Database
                 new Position { XCoordinate = 1170, YCoordinate = 238 }
             };
 
+            var flightDates = new List<FlightDate>
+            {
+                new FlightDate(10, 5, 2005, 10, 5, 10),
+                new FlightDate(12, 2, 2005, 15, 5, 10)
+            };
 
             var flightPlans = new List<FlightPlan>
             {
-            new FlightPlan{StartLocation="Sibiu", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 1, 10, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="Copenhagen", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 1, 10, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="Aalborg", EndLocation="Iasi", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 4, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="Berlin", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 9, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="London", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 13, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="Roma", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 17, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="Lisbon", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 21, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="Bucharest", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 25, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="Detroit", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 28, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
-            new FlightPlan{StartLocation="Milano", EndLocation="Aalborg", ArrivalTime= new System.DateTime(2019, 12, 28, 11, 30, 30, DateTime.Now.Kind),DepartureTime = new System.DateTime(2019, 12, 28, 10, 00, 30, DateTime.Now.Kind),  Delay = new System.DateTime(2019,12,28,10,30,30, DateTime.Now.Kind )},
+            new FlightPlan{StartLocation="Sibiu", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
+            new FlightPlan{StartLocation="Copenhagen", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
+            new FlightPlan{StartLocation="Aalborg", EndLocation="Iasi", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
+            new FlightPlan{StartLocation="Berlin", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
+            new FlightPlan{StartLocation="London", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
+            new FlightPlan{StartLocation="Roma", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
+            new FlightPlan{StartLocation="Lisbon", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
+            new FlightPlan{StartLocation="Bucharest", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
+            new FlightPlan{StartLocation="Detroit", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
+            new FlightPlan{StartLocation="Milano", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
             };
 
             Position positionStated = new Position { XCoordinate = 0, YCoordinate = 114 };
@@ -174,6 +178,11 @@ namespace SEP3_TIER3.Database
             }
             context.SaveChanges();
 
+            foreach (FlightDate flightDate in flightDates)
+            {
+                context.Add(flightDate);
+            }
+            context.SaveChanges();
 
             foreach (FlightPlan flight in flightPlans)
             {
@@ -187,17 +196,18 @@ namespace SEP3_TIER3.Database
             }
             context.SaveChanges();
 
-            foreach (Node groundNode in nodes)
-            {
-                context.Add(groundNode);
-            }
-            context.SaveChanges();
             foreach (Edge edge in edges)
             {
                 context.Add(edge);
-
             }
             context.SaveChanges();
+
+            foreach (Node node in nodes)
+            {
+                context.Add(node);
+            }
+            context.SaveChanges();
+
             foreach (NodeEdge nodeEdge in nodeEdges)
             {
                 context.Add(nodeEdge);

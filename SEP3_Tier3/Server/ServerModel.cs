@@ -7,32 +7,31 @@ namespace SEP3_TIER3.Server
 {
     class ServerModel
     {
-        public List<Position> Positions { get; set; }
-        public List<FlightPlan> FlightPlans { get; set; }
         public List<Plane> Planes { get; set; }
         public List<Edge> Edges { get; set; }
-        public List<Node> GroundNodes { get; set; }
-        public List<NodeEdge> NodeEdges { get; set; }
-        public List<NodeDTO> GroundNodesDTO { get; set; }
+        public List<Node> Nodes { get; set; }
+        //public List<NodeEdge> NodeEdges { get; set; }
+        //public List<NodeDTO> NodesDTO { get; set; }
         private DbsPersistence DatabaseAccess;
 
         public ServerModel()
         {
             DatabaseAccess = new DbsHandler();
-            Positions = new List<Position>();
-            FlightPlans = new List<FlightPlan>();
             Planes = new List<Plane>();
             Edges = new List<Edge>();
-            GroundNodes = new List<Node>();
-            NodeEdges = new List<NodeEdge>();
-            GroundNodesDTO = new List<NodeDTO>();
+            Nodes = new List<Node>();
 
-            LoadPlanesWithPositionAndPlan();
-            //LoadNodesWithEdgeAndPosition();
+            //NodeEdges = new List<NodeEdge>();
+            //NodesDTO = new List<NodeDTO>();
+
+            //DO NOT FORGET TO COMMENT, loading happens after a request is made from clients
+            LoadPlanes();
             LoadNodes();
             LoadEdges();
-            //LoadFlightPlans();
+
+            //LoadNodesWithEdgeAndPosition();
             //CreateNodesToSend();
+
             foreach(Plane plane in Planes)
             {
                 Console.WriteLine(plane);
@@ -43,79 +42,12 @@ namespace SEP3_TIER3.Server
                 Console.WriteLine(edge);
                 Console.WriteLine("-----------------------");
             }
-            foreach (Node node in GroundNodes)
+            foreach (Node node in Nodes)
             {
                 Console.WriteLine(node);
                 Console.WriteLine("-----------------------");
             }
-            /*foreach (NodeEdge node in NodeEdges)
-            {
-                Console.WriteLine(node);
-            }
-            Console.WriteLine("-----------------------");
-            foreach (GroundNode node in GroundNodes)
-            {
-                Console.WriteLine(node);
-            }
-            Console.WriteLine("-----------------------");
-            foreach (Edge edge in Edges)
-            {
-                Console.WriteLine(edge);
-            }
-            Console.WriteLine("-----------------------");
-            foreach (FlightPlan plan in FlightPlans)
-            {
-                Console.WriteLine(plan);
-            }
-            Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXX");
-            foreach (GroundNodeDTO node in GroundNodesDTO)
-            {
-                Console.WriteLine(node);
-            }
-            Console.WriteLine("-----------------------");*/
         }
-
-        public void CreateNodesToSend()
-        {
-            foreach (NodeEdge nodeEdge in NodeEdges)
-            {
-                bool flag = false;
-                foreach (NodeDTO nodeToSend in GroundNodesDTO)
-                {
-                    if (nodeEdge.NodeId == nodeToSend.NodeId)
-                    {
-                        flag = !flag;
-                        nodeToSend.Edges.Add(new EdgeDTO { EdgeId = nodeEdge.Edge.EdgeId, FromNodeIndex = nodeEdge.Edge.FromNodeIndex, ToNodeIndex = nodeEdge.Edge.ToNodeIndex, Length = nodeEdge.Edge.Length });
-                    }
-                }
-                if (!flag)
-                {                  
-                    GroundNodesDTO.Add(new NodeDTO { NodeId = nodeEdge.NodeId, Name = nodeEdge.GroundNode.Name, IsVisited = nodeEdge.GroundNode.IsVisited, Position = nodeEdge.GroundNode.Position, Edges = new List<EdgeDTO> { new EdgeDTO { EdgeId = nodeEdge.Edge.EdgeId, FromNodeIndex = nodeEdge.Edge.FromNodeIndex, ToNodeIndex = nodeEdge.Edge.ToNodeIndex, Length = nodeEdge.Edge.Length } } });
-                }
-            }
-
-            foreach (NodeDTO node in GroundNodesDTO)
-            {
-                node.NodeId = node.NodeId - 1;
-                foreach (EdgeDTO edge in node.Edges)
-                {
-                    edge.EdgeId = edge.EdgeId - 1;
-                }
-            }
-        }
-
-        public void LoadFlightPlans()
-        {
-            try
-            {
-                FlightPlans = DatabaseAccess.LoadFlightPlans();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-        }
-
         public void LoadEdges()
         {
             try
@@ -127,45 +59,73 @@ namespace SEP3_TIER3.Server
                 Console.WriteLine(e);
             }
         }
-
         public void LoadNodes()
         {
             try
             {
-                GroundNodes = DatabaseAccess.LoadGroundNodes();
+                Nodes = DatabaseAccess.LoadNodes();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
-            foreach (Node node in GroundNodes)
+            foreach (Node node in Nodes)
             {
                 node.NodeId = node.NodeId - 1;
             }
         }
-
-        public void LoadNodesWithEdgeAndPosition()
+        public void LoadPlanes()
         {
             try
             {
-                NodeEdges = DatabaseAccess.LoadNodesWithEdgeAndPosition();
+                Planes = DatabaseAccess.LoadPlanes();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
         }
+        //algorithm for sending a list of nodes with wach node having a list of edges
+       /* public void CreateNodesToSend()
+        {
+            foreach (NodeEdge nodeEdge in NodeEdges)
+            {
+                bool flag = false;
+                foreach (NodeDTO nodeToSend in NodesDTO)
+                {
+                    if (nodeEdge.NodeId == nodeToSend.NodeId)
+                    {
+                        flag = !flag;
+                        nodeToSend.Edges.Add(new EdgeDTO { EdgeId = nodeEdge.Edge.EdgeId, FromNodeIndex = nodeEdge.Edge.FromNodeIndex, ToNodeIndex = nodeEdge.Edge.ToNodeIndex, Length = nodeEdge.Edge.Length });
+                    }
+                }
+                if (!flag)
+                {                  
+                    NodesDTO.Add(new NodeDTO { NodeId = nodeEdge.NodeId, Name = nodeEdge.Node.Name, IsVisited = nodeEdge.Node.IsVisited, Position = nodeEdge.Node.Position, Edges = new List<EdgeDTO> { new EdgeDTO { EdgeId = nodeEdge.Edge.EdgeId, FromNodeIndex = nodeEdge.Edge.FromNodeIndex, ToNodeIndex = nodeEdge.Edge.ToNodeIndex, Length = nodeEdge.Edge.Length } } });
+                }
+            }
 
-        public void LoadPlanesWithPositionAndPlan()
+            foreach (NodeDTO node in NodesDTO)
+            {
+                node.NodeId = node.NodeId - 1;
+                foreach (EdgeDTO edge in node.Edges)
+                {
+                    edge.EdgeId = edge.EdgeId - 1;
+                }
+            }
+        }*/
+        //needed for algorithm
+        /*public void LoadNodesWithEdgeAndPosition()
         {
             try
             {
-                Planes = DatabaseAccess.LoadPlanesWithPositionAndPlan();
+                NodeEdges = DatabaseAccess.LoadNodeWithEdge();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
-        }
+        }*/
+
     }
 }

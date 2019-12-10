@@ -1,9 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using SEP3_TIER3.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SEP3_TIER3.Database
 {
@@ -19,8 +15,9 @@ namespace SEP3_TIER3.Database
         public DbSet<FlightPlan> FlightPlans { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<Edge> Edges { get; set; }
-        public DbSet<Node> GroundNodes { get; set; }
+        public DbSet<Node> Nodes { get; set; }
         public DbSet<NodeEdge> NodeEdges { get; set; }
+        public DbSet<FlightDate> FlightDates { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,9 +37,11 @@ namespace SEP3_TIER3.Database
                 .HasForeignKey(nodeEdge => nodeEdge.EdgeId);
 
             modelBuilder.Entity<NodeEdge>()
-                .HasOne(nodeEdge => nodeEdge.GroundNode)
+                .HasOne(nodeEdge => nodeEdge.Node)
                 .WithMany(groundNode => groundNode.NodeEdges)
                 .HasForeignKey(nodeEdge => nodeEdge.NodeId);
+
+            modelBuilder.Entity<Timer>().HasKey(delay => new { delay.Hour, delay.Minutes, delay.Seconds });
         }
     }
 }

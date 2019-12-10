@@ -1,54 +1,38 @@
-﻿using System;
+﻿using SEP3_TIER3.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using SEP3_TIER3.Model;
 
 namespace SEP3_TIER3.Database.DatabaseHandler
 {
     class DbsHandler : DbsPersistence
     {        
-        public List<Plane> LoadPlanesWithPositionAndPlan()
+        public List<Plane> LoadPlanes()
         {
             using (var context = new AppDbContext())
             {
-                if(!(context.Planes.Any() && context.Positions.Any() && context.FlightPlans.Any()))
+                if(!(context.Positions.Any() &&  context.FlightDates.Any() && context.FlightPlans.Any()  && context.Planes.Any()))
                 {
-                    throw new Exception("No data in Planes / Positions / FlightPlans");
+                    throw new Exception("No data in Positions / FlightDates / FlightPlans / Planes");
                 }
                 List<Position> positions = context.Positions.ToList();
+                List<FlightDate> flightDates = context.FlightDates.ToList();
                 List<FlightPlan> flightPlans = context.FlightPlans.ToList();
                 List<Plane> planes = context.Planes.ToList();
                 return planes;
             }
         }
 
-        public List<NodeEdge> LoadNodesWithEdgeAndPosition()
+        public List<Node> LoadNodes()
         {
             using (var context = new AppDbContext())
             {
-                if (!(context.NodeEdges.Any()&& context.Positions.Any() && context.GroundNodes.Any() && context.Edges.Any()))
-                {
-                    throw new Exception("No data in NodeEdges / Positions / GroundNodes / Edges");
-                }
-                List<Position> positions = context.Positions.ToList();
-                List<Node> groundNodes = context.GroundNodes.ToList();
-                List<Edge> edges = context.Edges.ToList();
-                List<NodeEdge> nodes = context.NodeEdges.ToList();
-                return nodes;
-            }
-        }
-
-        public List<Node> LoadGroundNodes()
-        {
-            using (var context = new AppDbContext())
-            {
-                if (!(context.GroundNodes.Any() && context.Positions.Any()))
+                if (!(context.Positions.Any() && context.Nodes.Any()))
                 {   
-                    throw new Exception("No data in GroundNodes and Position");
+                    throw new Exception("No data in GroundNodes / Position");
                 }
                 List<Position> positions = context.Positions.ToList();
-                List<Node> groundNodes = context.GroundNodes.ToList();
+                List<Node> groundNodes = context.Nodes.ToList();
                 return groundNodes;
             }
         }
@@ -66,17 +50,20 @@ namespace SEP3_TIER3.Database.DatabaseHandler
             }
         }
 
-        public List<FlightPlan> LoadFlightPlans()
+        /*public List<NodeEdge> LoadNodeWithEdge()
         {
             using (var context = new AppDbContext())
             {
-                if (!(context.FlightPlans.Any()))
+                if (!(context.Positions.Any() && context.Nodes.Any() && context.Edges.Any() && context.NodeEdges.Any()))
                 {
-                    throw new Exception("No data in FlightPlan");
+                    throw new Exception("No data in NodeEdges / Positions / GroundNodes / Edges");
                 }
-                List<FlightPlan> flightPlans = context.FlightPlans.ToList();
-                return flightPlans;
+                List<Position> positions = context.Positions.ToList();
+                List<Node> groundNodes = context.Nodes.ToList();
+                List<Edge> edges = context.Edges.ToList();
+                List<NodeEdge> nodes = context.NodeEdges.ToList();
+                return nodes;
             }
-        }
+        }*/
     }
 }

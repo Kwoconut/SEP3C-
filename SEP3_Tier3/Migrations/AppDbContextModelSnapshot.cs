@@ -45,14 +45,23 @@ namespace SEP3_TIER3.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("ArrivalTime")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("ArrivalTimeHour")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("Delay")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("ArrivalTimeMinutes")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("DepartureTime")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("ArrivalTimeSeconds")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DepartureTimeHour")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DepartureTimeMinutes")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DepartureTimeSeconds")
+                        .HasColumnType("int");
 
                     b.Property<string>("EndLocation")
                         .HasColumnType("nvarchar(max)");
@@ -61,6 +70,10 @@ namespace SEP3_TIER3.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ArrivalTimeHour", "ArrivalTimeMinutes", "ArrivalTimeSeconds");
+
+                    b.HasIndex("DepartureTimeHour", "DepartureTimeMinutes", "DepartureTimeSeconds");
 
                     b.ToTable("FlightPlans");
                 });
@@ -93,7 +106,7 @@ namespace SEP3_TIER3.Migrations
 
                     b.HasIndex("PositionXCoordinate", "PositionYCoordinate");
 
-                    b.ToTable("GroundNodes");
+                    b.ToTable("Nodes");
                 });
 
             modelBuilder.Entity("SEP3_TIER3.Model.NodeEdge", b =>
@@ -157,6 +170,55 @@ namespace SEP3_TIER3.Migrations
                     b.ToTable("Positions");
                 });
 
+            modelBuilder.Entity("SEP3_TIER3.Model.Timer", b =>
+                {
+                    b.Property<int>("Hour")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Minutes")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Seconds")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Hour", "Minutes", "Seconds");
+
+                    b.ToTable("Timer");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Timer");
+                });
+
+            modelBuilder.Entity("SEP3_TIER3.Model.FlightDate", b =>
+                {
+                    b.HasBaseType("SEP3_TIER3.Model.Timer");
+
+                    b.Property<int>("Day")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Month")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasDiscriminator().HasValue("FlightDate");
+                });
+
+            modelBuilder.Entity("SEP3_TIER3.Model.FlightPlan", b =>
+                {
+                    b.HasOne("SEP3_TIER3.Model.FlightDate", "ArrivalTime")
+                        .WithMany()
+                        .HasForeignKey("ArrivalTimeHour", "ArrivalTimeMinutes", "ArrivalTimeSeconds");
+
+                    b.HasOne("SEP3_TIER3.Model.FlightDate", "DepartureTime")
+                        .WithMany()
+                        .HasForeignKey("DepartureTimeHour", "DepartureTimeMinutes", "DepartureTimeSeconds");
+                });
+
             modelBuilder.Entity("SEP3_TIER3.Model.Node", b =>
                 {
                     b.HasOne("SEP3_TIER3.Model.Position", "Position")
@@ -174,7 +236,7 @@ namespace SEP3_TIER3.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SEP3_TIER3.Model.Node", "GroundNode")
+                    b.HasOne("SEP3_TIER3.Model.Node", "Node")
                         .WithMany("NodeEdges")
                         .HasForeignKey("NodeId")
                         .OnDelete(DeleteBehavior.Cascade)
