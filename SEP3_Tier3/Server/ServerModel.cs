@@ -69,10 +69,10 @@ namespace SEP3_TIER3.Server
             {
                 Console.WriteLine(e);
             }
-            foreach (Node node in Nodes)
+            /*foreach (Node node in Nodes)
             {
                 node.NodeId = node.NodeId - 1;
-            }
+            }*/
         }
         public void LoadPlanes()
         {

@@ -1,5 +1,4 @@
-﻿
-using SEP3_TIER3.Model;
+﻿using SEP3_TIER3.Model;
 using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
@@ -40,16 +39,6 @@ namespace SEP3_TIER3.Server
             stream.Write(toSendLengthBytes);
             stream.Write(toSendBytes);
         }
-
-        /*private void SendNodesWithEdges(NetworkStream stream, List<GroundNodeDTO> nodesToSend)
-        {
-            var json = JsonSerializer.Serialize(nodesToSend);
-            int length = Encoding.ASCII.GetByteCount(json);
-            byte[] toSendBytes = Encoding.ASCII.GetBytes(json);
-            byte[] toSendLengthBytes = BitConverter.GetBytes(length);
-            stream.Write(toSendLengthBytes);
-            stream.Write(toSendBytes);
-        }*/
         private void SendNodesWithPosition(NetworkStream stream, List<Node> nodesToSend)
         {
             Request request = new Request { Type = "RESPONSENODES", Nodes = nodesToSend };
@@ -70,6 +59,16 @@ namespace SEP3_TIER3.Server
             stream.Write(toSendLengthBytes);
             stream.Write(toSendBytes);
         }
+
+        /*private void SendNodesWithEdges(NetworkStream stream, List<GroundNodeDTO> nodesToSend)
+        {
+            var json = JsonSerializer.Serialize(nodesToSend);
+            int length = Encoding.ASCII.GetByteCount(json);
+            byte[] toSendBytes = Encoding.ASCII.GetBytes(json);
+            byte[] toSendLengthBytes = BitConverter.GetBytes(length);
+            stream.Write(toSendLengthBytes);
+            stream.Write(toSendBytes);
+        }*/
         private void Run()
         {
             NetworkStream stream = client.GetStream();

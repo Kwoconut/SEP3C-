@@ -1,9 +1,7 @@
 ﻿using SEP3_TIER3.Database;
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 
 namespace SEP3_TIER3.Server
 {
@@ -32,7 +30,7 @@ namespace SEP3_TIER3.Server
         }
         public static void Main (String [] args)
         {
-            Server server = new Server { IP = "192.168.1.143", Port = 6789};
+            Server server = new Server { IP = "10.152.194.106", Port = 6789};
             server.SetupServer();
         }
     }
