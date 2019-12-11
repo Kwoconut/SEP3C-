@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SEP3_TIER3.Model
+﻿namespace SEP3_TIER3.Model
 {
     public class FlightDate: Timer
     {
@@ -10,11 +6,11 @@ namespace SEP3_TIER3.Model
         public int Month { get; set; }
         public int Year { get; set; }
 
-        public FlightDate(int day, int month, int year, int hour, int minutes, int seconds) : base(seconds, minutes, hour)
+        public FlightDate(int Day, int Month, int Year, int Hour, int Minutes, int Seconds) : base(Seconds, Minutes, Hour)
         {
-            Day = day;
-            Month = month;
-            Year = year;
+            this.Day = Day;
+            this.Month = Month;
+            this.Year = Year;
         }
 
         public override string ToString()

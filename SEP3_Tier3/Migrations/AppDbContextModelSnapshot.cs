@@ -40,10 +40,11 @@ namespace SEP3_TIER3.Migrations
 
             modelBuilder.Entity("SEP3_TIER3.Model.FlightPlan", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("StartLocation")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("EndLocation")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("ArrivalTimeHour")
                         .HasColumnType("int");
@@ -63,13 +64,7 @@ namespace SEP3_TIER3.Migrations
                     b.Property<int?>("DepartureTimeSeconds")
                         .HasColumnType("int");
 
-                    b.Property<string>("EndLocation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StartLocation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
+                    b.HasKey("StartLocation", "EndLocation");
 
                     b.HasIndex("ArrivalTimeHour", "ArrivalTimeMinutes", "ArrivalTimeSeconds");
 
@@ -133,8 +128,13 @@ namespace SEP3_TIER3.Migrations
                     b.Property<string>("Company")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FlightPlanId")
-                        .HasColumnType("int");
+                    b.Property<string>("FlightPlanEndLocation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FlightPlanStartLocation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
@@ -150,7 +150,7 @@ namespace SEP3_TIER3.Migrations
 
                     b.HasKey("CallSign");
 
-                    b.HasIndex("FlightPlanId");
+                    b.HasIndex("FlightPlanStartLocation", "FlightPlanEndLocation");
 
                     b.HasIndex("PositionXCoordinate", "PositionYCoordinate");
 
@@ -247,7 +247,7 @@ namespace SEP3_TIER3.Migrations
                 {
                     b.HasOne("SEP3_TIER3.Model.FlightPlan", "FlightPlan")
                         .WithMany()
-                        .HasForeignKey("FlightPlanId")
+                        .HasForeignKey("FlightPlanStartLocation", "FlightPlanEndLocation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SEP3_TIER3.Model
+﻿namespace SEP3_TIER3.Model
 {
     public class NodeDTO
     {

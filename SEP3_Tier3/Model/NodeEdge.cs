@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace SEP3_TIER3.Model
+﻿namespace SEP3_TIER3.Model
 {
-   public class NodeEdge
+    public class NodeEdge
     {
         public int EdgeId { get; set; }
 

@@ -28,7 +28,6 @@ namespace SEP3_TIER3.Server
             String rcv = Encoding.ASCII.GetString(receiveBytes);
             return JsonSerializer.Deserialize<Request>(rcv);
         }
-
         private void SendPlanes(NetworkStream stream, List<Plane> planes)
         {
             Request request = new Request { Type = "RESPONSEPLANES", Planes = planes };

@@ -76,20 +76,18 @@ namespace SEP3_TIER3.Migrations
                 name: "FlightPlans",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StartLocation = table.Column<string>(nullable: false),
+                    EndLocation = table.Column<string>(nullable: false),
                     DepartureTimeHour = table.Column<int>(nullable: true),
                     DepartureTimeMinutes = table.Column<int>(nullable: true),
                     DepartureTimeSeconds = table.Column<int>(nullable: true),
                     ArrivalTimeHour = table.Column<int>(nullable: true),
                     ArrivalTimeMinutes = table.Column<int>(nullable: true),
-                    ArrivalTimeSeconds = table.Column<int>(nullable: true),
-                    StartLocation = table.Column<string>(nullable: true),
-                    EndLocation = table.Column<string>(nullable: true)
+                    ArrivalTimeSeconds = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FlightPlans", x => x.Id);
+                    table.PrimaryKey("PK_FlightPlans", x => new { x.StartLocation, x.EndLocation });
                     table.ForeignKey(
                         name: "FK_FlightPlans_Timer_ArrivalTimeHour_ArrivalTimeMinutes_ArrivalTimeSeconds",
                         columns: x => new { x.ArrivalTimeHour, x.ArrivalTimeMinutes, x.ArrivalTimeSeconds },
@@ -135,7 +133,8 @@ namespace SEP3_TIER3.Migrations
                     CallSign = table.Column<string>(maxLength: 10, nullable: false),
                     Model = table.Column<string>(nullable: true),
                     Company = table.Column<string>(nullable: true),
-                    FlightPlanId = table.Column<int>(nullable: false),
+                    FlightPlanStartLocation = table.Column<string>(nullable: false),
+                    FlightPlanEndLocation = table.Column<string>(nullable: false),
                     PositionXCoordinate = table.Column<double>(nullable: false),
                     PositionYCoordinate = table.Column<double>(nullable: false),
                     Status = table.Column<string>(nullable: true)
@@ -144,10 +143,10 @@ namespace SEP3_TIER3.Migrations
                 {
                     table.PrimaryKey("PK_Planes", x => x.CallSign);
                     table.ForeignKey(
-                        name: "FK_Planes_FlightPlans_FlightPlanId",
-                        column: x => x.FlightPlanId,
+                        name: "FK_Planes_FlightPlans_FlightPlanStartLocation_FlightPlanEndLocation",
+                        columns: x => new { x.FlightPlanStartLocation, x.FlightPlanEndLocation },
                         principalTable: "FlightPlans",
-                        principalColumn: "Id",
+                        principalColumns: new[] { "StartLocation", "EndLocation" },
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Planes_Positions_PositionXCoordinate_PositionYCoordinate",
@@ -178,9 +177,9 @@ namespace SEP3_TIER3.Migrations
                 columns: new[] { "PositionXCoordinate", "PositionYCoordinate" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Planes_FlightPlanId",
+                name: "IX_Planes_FlightPlanStartLocation_FlightPlanEndLocation",
                 table: "Planes",
-                column: "FlightPlanId");
+                columns: new[] { "FlightPlanStartLocation", "FlightPlanEndLocation" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Planes_PositionXCoordinate_PositionYCoordinate",

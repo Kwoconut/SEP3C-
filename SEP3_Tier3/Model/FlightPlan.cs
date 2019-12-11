@@ -1,15 +1,9 @@
-using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SEP3_TIER3.Model
 {
     public class FlightPlan
     {
-        [Key]
-        [Required]
-        public int Id { get; }
-
         public FlightDate DepartureTime { get; set; }
 
         public FlightDate ArrivalTime { get; set; }
@@ -21,7 +15,7 @@ namespace SEP3_TIER3.Model
         public string EndLocation { get; set; }
         public override string ToString()
         {
-            return $"Id: {Id} \nDepartureTime: {DepartureTime} \nArrivalTime: {ArrivalTime} \nStartLocation: {StartLocation} \nEndLocation: {EndLocation}";
+            return $"DepartureTime: {DepartureTime} \nArrivalTime: {ArrivalTime} \nStartLocation: {StartLocation} \nEndLocation: {EndLocation}";
         }
     }
 }

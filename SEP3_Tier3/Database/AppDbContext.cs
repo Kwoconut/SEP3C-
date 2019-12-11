@@ -24,8 +24,7 @@ namespace SEP3_TIER3.Database
             modelBuilder.Entity<Node>().HasKey("NodeId");
             modelBuilder.Entity<Node>().Property(p => p.NodeId).ValueGeneratedNever();
             modelBuilder.Entity<Edge>().HasKey("EdgeId");
-            modelBuilder.Entity<Edge>().Property(p => p.EdgeId).ValueGeneratedNever();
-            modelBuilder.Entity<FlightPlan>().HasKey("Id");
+            modelBuilder.Entity<Edge>().Property(p => p.EdgeId).ValueGeneratedNever();         
             modelBuilder.Entity<Position>().HasKey("XCoordinate", "YCoordinate");
 
             modelBuilder.Entity<NodeEdge>()
@@ -42,6 +41,7 @@ namespace SEP3_TIER3.Database
                 .HasForeignKey(nodeEdge => nodeEdge.NodeId);
 
             modelBuilder.Entity<Timer>().HasKey(delay => new { delay.Hour, delay.Minutes, delay.Seconds });
+            modelBuilder.Entity<FlightPlan>().HasKey(flightPlan => new { flightPlan.StartLocation, flightPlan.EndLocation });
         }
     }
 }

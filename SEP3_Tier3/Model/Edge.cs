@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace SEP3_TIER3.Model
 {
-   public class Edge
+    public class Edge
     {
         public int EdgeId { get; set; }
         public int Length { get; set; }

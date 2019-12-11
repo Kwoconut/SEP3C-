@@ -66,22 +66,64 @@ namespace SEP3_TIER3.Database
 
             var flightDates = new List<FlightDate>
             {
-                new FlightDate(10, 5, 2005, 10, 5, 10),
-                new FlightDate(12, 2, 2005, 15, 5, 10)
+                new FlightDate(18, 12, 2019, 08, 00, 00),
+                new FlightDate(18, 12, 2019, 08, 03, 00),
+                new FlightDate(18, 12, 2019, 08, 06, 00),
+                new FlightDate(18, 12, 2019, 08, 09, 00),
+                new FlightDate(18, 12, 2019, 08, 12, 00),
+                new FlightDate(18, 12, 2019, 08, 15, 00),
+                new FlightDate(18, 12, 2019, 08, 18, 00),
+                new FlightDate(18, 12, 2019, 08, 21, 00),
+                new FlightDate(18, 12, 2019, 08, 24, 00),
+                new FlightDate(18, 12, 2019, 09, 07, 00),
+                new FlightDate(18, 12, 2019, 09, 14, 00),
+                new FlightDate(18, 12, 2019, 09, 21, 00),
+                new FlightDate(18, 12, 2019, 09, 28, 00),
+                new FlightDate(18, 12, 2019, 09, 35, 00),
+                new FlightDate(18, 12, 2019, 09, 42, 00),
+                new FlightDate(18, 12, 2019, 09, 49, 00),
+                new FlightDate(18, 12, 2019, 09, 56, 00),
+                new FlightDate(18, 12, 2019, 10, 03, 00),
+                new FlightDate(18, 12, 2019, 08, 27, 00),
+                new FlightDate(18, 12, 2019, 08, 30, 00),
+                new FlightDate(18, 12, 2019, 08, 33, 00),
+                new FlightDate(18, 12, 2019, 08, 36, 00),
+                new FlightDate(18, 12, 2019, 08, 39, 00),
+                new FlightDate(18, 12, 2019, 08, 42, 00),
+                new FlightDate(18, 12, 2019, 08, 45, 00),
+                new FlightDate(18, 12, 2019, 08, 48, 00),
+                new FlightDate(18, 12, 2019, 08, 51, 00),
+                new FlightDate(18, 12, 2019, 10, 10, 00),
+                new FlightDate(18, 12, 2019, 10, 17, 00),
+                new FlightDate(18, 12, 2019, 10, 24, 00),
+                new FlightDate(18, 12, 2019, 10, 31, 00),
+                new FlightDate(18, 12, 2019, 10, 38, 00),
+                new FlightDate(18, 12, 2019, 10, 45, 00),
+                new FlightDate(18, 12, 2019, 10, 52, 00),
+                new FlightDate(18, 12, 2019, 10, 59, 00),
+                new FlightDate(18, 12, 2019, 11, 06, 00)
             };
 
             var flightPlans = new List<FlightPlan>
             {
-            new FlightPlan{StartLocation="Sibiu", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
-            new FlightPlan{StartLocation="Copenhagen", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
-            new FlightPlan{StartLocation="Aalborg", EndLocation="Iasi", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
-            new FlightPlan{StartLocation="Berlin", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
-            new FlightPlan{StartLocation="London", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
-            new FlightPlan{StartLocation="Roma", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
-            new FlightPlan{StartLocation="Lisbon", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
-            new FlightPlan{StartLocation="Bucharest", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
-            new FlightPlan{StartLocation="Detroit", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
-            new FlightPlan{StartLocation="Milano", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[1]},
+            new FlightPlan{StartLocation="Sibiu", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[9]},
+            new FlightPlan{StartLocation="Copenhagen", EndLocation="Aalborg", ArrivalTime= flightDates[1], DepartureTime = flightDates[10]},
+            new FlightPlan{StartLocation="Lisbon", EndLocation="Aalborg", ArrivalTime= flightDates[2], DepartureTime = flightDates[11]},
+            new FlightPlan{StartLocation="Berlin", EndLocation="Aalborg", ArrivalTime= flightDates[3], DepartureTime = flightDates[12]},
+            new FlightPlan{StartLocation="London", EndLocation="Aalborg", ArrivalTime= flightDates[4], DepartureTime = flightDates[13]},
+            new FlightPlan{StartLocation="Roma", EndLocation="Aalborg", ArrivalTime= flightDates[5], DepartureTime = flightDates[14]},
+            new FlightPlan{StartLocation="Varna", EndLocation="Aalborg", ArrivalTime= flightDates[6], DepartureTime = flightDates[15]},
+            new FlightPlan{StartLocation="Bucharest", EndLocation="Aalborg", ArrivalTime= flightDates[7], DepartureTime = flightDates[16]},
+            new FlightPlan{StartLocation="Detroit", EndLocation="Aalborg", ArrivalTime= flightDates[8], DepartureTime = flightDates[17]},
+            new FlightPlan{StartLocation="Aalborg", EndLocation="Oslo", ArrivalTime= flightDates[18], DepartureTime = flightDates[27]},
+            new FlightPlan{StartLocation="Aalborg", EndLocation="Rio", ArrivalTime= flightDates[19], DepartureTime = flightDates[28]},
+            new FlightPlan{StartLocation="Aalborg", EndLocation="Tokyo", ArrivalTime= flightDates[20], DepartureTime = flightDates[29]},
+            new FlightPlan{StartLocation="Aalborg", EndLocation="Bucharest", ArrivalTime= flightDates[21], DepartureTime = flightDates[30]},
+            new FlightPlan{StartLocation="Aalborg", EndLocation="Chisinau", ArrivalTime= flightDates[22], DepartureTime = flightDates[31]},
+            new FlightPlan{StartLocation="Aalborg", EndLocation="Maimi", ArrivalTime= flightDates[23], DepartureTime = flightDates[32]},
+            new FlightPlan{StartLocation="Aalborg", EndLocation="Charlestone DC", ArrivalTime= flightDates[24], DepartureTime = flightDates[33]},
+            new FlightPlan{StartLocation="Aalborg", EndLocation="Paris", ArrivalTime= flightDates[25], DepartureTime = flightDates[34]},
+            new FlightPlan{StartLocation="Aalborg", EndLocation="Vienna", ArrivalTime= flightDates[26], DepartureTime = flightDates[35]},
             };
 
             Position positionStated = new Position { XCoordinate = 0, YCoordinate = 114 };
@@ -124,8 +166,6 @@ namespace SEP3_TIER3.Database
                 new Edge{EdgeId = 22, FromNodeIndex = 19, ToNodeIndex = 15, Length = 8},
                 new Edge{EdgeId = 23, FromNodeIndex = 15, ToNodeIndex = 14, Length = 8}
             };
-
-
             var nodes = new List<Node>
             {
             new Node{NodeId = 0,  Name = "Gate A", IsVisited = false, Position = positions[0], IsGroundNode = true},
