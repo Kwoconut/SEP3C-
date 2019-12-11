@@ -71,54 +71,60 @@ namespace SEP3_TIER3.Server
         private void Run()
         {
             NetworkStream stream = client.GetStream();
-            while (true)
+            try
             {
-                Request request = ReceiveRequest(stream);
-                switch (request.Type)
+                while (true)
                 {
-                    case "REQUESTPLANES":
-                        {
-                            if (serverModel.Planes.Count == 0)
+                    Request request = ReceiveRequest(stream);
+                    switch (request.Type)
+                    {
+                        case "REQUESTPLANES":
                             {
-                                serverModel.LoadPlanes();
+                                if (serverModel.Planes.Count == 0)
+                                {
+                                    serverModel.LoadPlanes();
+                                }
+                                SendPlanes(stream, serverModel.Planes);
+                                break;
                             }
-                            SendPlanes(stream, serverModel.Planes);
-                            break;
-                        }
-                    case "REQUESTNODES":
-                        {
-                            if (serverModel.Nodes.Count == 0)
+                        case "REQUESTNODES":
                             {
-                                serverModel.LoadNodes();
+                                if (serverModel.Nodes.Count == 0)
+                                {
+                                    serverModel.LoadNodes();
+                                }
+                                SendNodes(stream, serverModel.NodesDTO);
+                                break;
                             }
-                            SendNodes(stream, serverModel.NodesDTO);
-                            break;
-                        }
-                    case "REQUESTEDGES":
-                        {
-                            if (serverModel.Edges.Count == 0)
+                        case "REQUESTEDGES":
                             {
-                                serverModel.LoadEdges();
+                                if (serverModel.Edges.Count == 0)
+                                {
+                                    serverModel.LoadEdges();
+                                }
+                                SendEdges(stream, serverModel.EdgesDTO);
+                                break;
                             }
-                            SendEdges(stream, serverModel.EdgesDTO);
-                            break;
-                        }
-                    default:
-                        {
-                            break;
-                        }
+                        default:
+                            {
+                                break;
+                            }
+                    }
                 }
             }
+            catch (System.IO.IOException ex)
+            {
+                stream.Close();
+                client.Close();
+            }
+        }
+
+        public class Request
+        {
+            public string Type { get; set; }
+            public List<Plane> Planes { get; set; }
+            public List<EdgeDTO> Edges { get; set; }
+            public List<NodeDTO> Nodes { get; set; }
         }
     }
-
-    public class Request
-    {
-        public string Type { get; set; }
-        public List<Plane> Planes { get; set; }
-        public List<EdgeDTO> Edges { get; set; }
-        public List<NodeDTO> Nodes { get; set; }
-    }
-
-
 }
