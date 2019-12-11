@@ -11,7 +11,8 @@ namespace SEP3_TIER3.Server
         public List<Edge> Edges { get; set; }
         public List<Node> Nodes { get; set; }
         //public List<NodeEdge> NodeEdges { get; set; }
-        //public List<NodeDTO> NodesDTO { get; set; }
+        public List<NodeDTO> NodesDTO { get; set; }
+        public List<EdgeDTO> EdgesDTO { get; set; }
         private DbsPersistence DatabaseAccess;
 
         public ServerModel()
@@ -22,8 +23,8 @@ namespace SEP3_TIER3.Server
             Nodes = new List<Node>();
 
             //NodeEdges = new List<NodeEdge>();
-            //NodesDTO = new List<NodeDTO>();
-
+            NodesDTO = new List<NodeDTO>();
+            EdgesDTO = new List<EdgeDTO>();
             //DO NOT FORGET TO COMMENT, loading happens after a request is made from clients
             LoadPlanes();
             LoadNodes();
@@ -37,12 +38,12 @@ namespace SEP3_TIER3.Server
                 Console.WriteLine(plane);
                 Console.WriteLine("-----------------------");
             }
-            foreach (Edge edge in Edges)
+            foreach (EdgeDTO edge in EdgesDTO)
             {
                 Console.WriteLine(edge);
                 Console.WriteLine("-----------------------");
             }
-            foreach (Node node in Nodes)
+            foreach (NodeDTO node in NodesDTO)
             {
                 Console.WriteLine(node);
                 Console.WriteLine("-----------------------");
@@ -58,6 +59,10 @@ namespace SEP3_TIER3.Server
             {
                 Console.WriteLine(e);
             }
+            foreach(Edge edge in Edges)
+            {
+                EdgesDTO.Add(new EdgeDTO { EdgeId = edge.EdgeId, Length = edge.Length, FromNodeIndex = edge.FromNodeIndex, ToNodeIndex = edge.ToNodeIndex }) ;
+            }
         }
         public void LoadNodes()
         {
@@ -69,10 +74,10 @@ namespace SEP3_TIER3.Server
             {
                 Console.WriteLine(e);
             }
-            /*foreach (Node node in Nodes)
+            foreach (Node node in Nodes)
             {
-                node.NodeId = node.NodeId - 1;
-            }*/
+                NodesDTO.Add(new NodeDTO { Name = node.Name, NodeId = node.NodeId, IsVisited = node.IsVisited, Position = node.Position, DistanceFromSource = node.DistanceFromSource, isGroundNode = node.isGroundNode});
+            }
         }
         public void LoadPlanes()
         {

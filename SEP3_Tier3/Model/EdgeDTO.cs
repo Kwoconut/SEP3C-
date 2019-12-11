@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SEP3_TIER3.Model
 {
-    class EdgeDTO
+    public class EdgeDTO
     {
         public int EdgeId { get; set; }
         public int Length { get; set; }
