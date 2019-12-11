@@ -76,7 +76,7 @@ namespace SEP3_TIER3.Server
             }
             foreach (Node node in Nodes)
             {
-                NodesDTO.Add(new NodeDTO { Name = node.Name, NodeId = node.NodeId, IsVisited = node.IsVisited, Position = node.Position, DistanceFromSource = node.DistanceFromSource, isGroundNode = node.isGroundNode});
+                NodesDTO.Add(new NodeDTO { Name = node.Name, NodeId = node.NodeId, IsVisited = node.IsVisited, Position = node.Position, DistanceFromSource = node.DistanceFromSource, IsGroundNode = node.IsGroundNode });
             }
         }
         public void LoadPlanes()

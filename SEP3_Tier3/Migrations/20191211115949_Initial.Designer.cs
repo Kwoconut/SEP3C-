@@ -10,7 +10,7 @@ using SEP3_TIER3.Database;
 namespace SEP3_TIER3.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191211114242_Initial")]
+    [Migration("20191211115949_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -89,6 +89,9 @@ namespace SEP3_TIER3.Migrations
                     b.Property<int>("DistanceFromSource")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsGroundNode")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsVisited")
                         .HasColumnType("bit");
 
@@ -100,9 +103,6 @@ namespace SEP3_TIER3.Migrations
 
                     b.Property<double>("PositionYCoordinate")
                         .HasColumnType("float");
-
-                    b.Property<bool>("isGroundNode")
-                        .HasColumnType("bit");
 
                     b.HasKey("NodeId");
 

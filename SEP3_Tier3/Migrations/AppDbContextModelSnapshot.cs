@@ -87,6 +87,9 @@ namespace SEP3_TIER3.Migrations
                     b.Property<int>("DistanceFromSource")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsGroundNode")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsVisited")
                         .HasColumnType("bit");
 
@@ -98,9 +101,6 @@ namespace SEP3_TIER3.Migrations
 
                     b.Property<double>("PositionYCoordinate")
                         .HasColumnType("float");
-
-                    b.Property<bool>("isGroundNode")
-                        .HasColumnType("bit");
 
                     b.HasKey("NodeId");
 

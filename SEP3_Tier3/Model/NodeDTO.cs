@@ -11,11 +11,11 @@ namespace SEP3_TIER3.Model
         public bool IsVisited { get; set; }
         public Position Position { get; set; }
         public int DistanceFromSource { get; set; }
-        public bool isGroundNode { get; set; }
+        public bool IsGroundNode { get; set; }
 
         public override string ToString()
         {
-            return $"NodeId: {NodeId} \nName: {Name} \nIsVisited {IsVisited} \nPosition {Position} \nDistanceFromSource {DistanceFromSource}\nIsGroundNode: {isGroundNode}";
+            return $"NodeId: {NodeId} \nName: {Name} \nIsVisited {IsVisited} \nPosition {Position} \nDistanceFromSource {DistanceFromSource}\nIsGroundNode: {IsGroundNode}";
         }
     }
 }

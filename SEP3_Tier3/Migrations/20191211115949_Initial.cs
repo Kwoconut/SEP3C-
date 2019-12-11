@@ -59,7 +59,7 @@ namespace SEP3_TIER3.Migrations
                     PositionXCoordinate = table.Column<double>(nullable: false),
                     PositionYCoordinate = table.Column<double>(nullable: false),
                     DistanceFromSource = table.Column<int>(nullable: false),
-                    isGroundNode = table.Column<bool>(nullable: false)
+                    IsGroundNode = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
