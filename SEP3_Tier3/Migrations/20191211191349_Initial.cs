@@ -76,6 +76,7 @@ namespace SEP3_TIER3.Migrations
                 name: "FlightPlans",
                 columns: table => new
                 {
+                    FlightNumber = table.Column<int>(nullable: false),
                     StartLocation = table.Column<string>(nullable: false),
                     EndLocation = table.Column<string>(nullable: false),
                     DepartureTimeHour = table.Column<int>(nullable: true),
@@ -87,7 +88,7 @@ namespace SEP3_TIER3.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FlightPlans", x => new { x.StartLocation, x.EndLocation });
+                    table.PrimaryKey("PK_FlightPlans", x => new { x.StartLocation, x.EndLocation, x.FlightNumber });
                     table.ForeignKey(
                         name: "FK_FlightPlans_Timer_ArrivalTimeHour_ArrivalTimeMinutes_ArrivalTimeSeconds",
                         columns: x => new { x.ArrivalTimeHour, x.ArrivalTimeMinutes, x.ArrivalTimeSeconds },
@@ -135,6 +136,7 @@ namespace SEP3_TIER3.Migrations
                     Company = table.Column<string>(nullable: true),
                     FlightPlanStartLocation = table.Column<string>(nullable: false),
                     FlightPlanEndLocation = table.Column<string>(nullable: false),
+                    FlightPlanFlightNumber = table.Column<int>(nullable: false),
                     PositionXCoordinate = table.Column<double>(nullable: false),
                     PositionYCoordinate = table.Column<double>(nullable: false),
                     Status = table.Column<string>(nullable: true)
@@ -143,16 +145,16 @@ namespace SEP3_TIER3.Migrations
                 {
                     table.PrimaryKey("PK_Planes", x => x.CallSign);
                     table.ForeignKey(
-                        name: "FK_Planes_FlightPlans_FlightPlanStartLocation_FlightPlanEndLocation",
-                        columns: x => new { x.FlightPlanStartLocation, x.FlightPlanEndLocation },
-                        principalTable: "FlightPlans",
-                        principalColumns: new[] { "StartLocation", "EndLocation" },
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Planes_Positions_PositionXCoordinate_PositionYCoordinate",
                         columns: x => new { x.PositionXCoordinate, x.PositionYCoordinate },
                         principalTable: "Positions",
                         principalColumns: new[] { "XCoordinate", "YCoordinate" },
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Planes_FlightPlans_FlightPlanStartLocation_FlightPlanEndLocation_FlightPlanFlightNumber",
+                        columns: x => new { x.FlightPlanStartLocation, x.FlightPlanEndLocation, x.FlightPlanFlightNumber },
+                        principalTable: "FlightPlans",
+                        principalColumns: new[] { "StartLocation", "EndLocation", "FlightNumber" },
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -177,14 +179,14 @@ namespace SEP3_TIER3.Migrations
                 columns: new[] { "PositionXCoordinate", "PositionYCoordinate" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Planes_FlightPlanStartLocation_FlightPlanEndLocation",
-                table: "Planes",
-                columns: new[] { "FlightPlanStartLocation", "FlightPlanEndLocation" });
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Planes_PositionXCoordinate_PositionYCoordinate",
                 table: "Planes",
                 columns: new[] { "PositionXCoordinate", "PositionYCoordinate" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Planes_FlightPlanStartLocation_FlightPlanEndLocation_FlightPlanFlightNumber",
+                table: "Planes",
+                columns: new[] { "FlightPlanStartLocation", "FlightPlanEndLocation", "FlightPlanFlightNumber" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

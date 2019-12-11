@@ -46,6 +46,9 @@ namespace SEP3_TIER3.Migrations
                     b.Property<string>("EndLocation")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("FlightNumber")
+                        .HasColumnType("int");
+
                     b.Property<int?>("ArrivalTimeHour")
                         .HasColumnType("int");
 
@@ -64,7 +67,7 @@ namespace SEP3_TIER3.Migrations
                     b.Property<int?>("DepartureTimeSeconds")
                         .HasColumnType("int");
 
-                    b.HasKey("StartLocation", "EndLocation");
+                    b.HasKey("StartLocation", "EndLocation", "FlightNumber");
 
                     b.HasIndex("ArrivalTimeHour", "ArrivalTimeMinutes", "ArrivalTimeSeconds");
 
@@ -132,6 +135,9 @@ namespace SEP3_TIER3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("FlightPlanFlightNumber")
+                        .HasColumnType("int");
+
                     b.Property<string>("FlightPlanStartLocation")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -150,9 +156,9 @@ namespace SEP3_TIER3.Migrations
 
                     b.HasKey("CallSign");
 
-                    b.HasIndex("FlightPlanStartLocation", "FlightPlanEndLocation");
-
                     b.HasIndex("PositionXCoordinate", "PositionYCoordinate");
+
+                    b.HasIndex("FlightPlanStartLocation", "FlightPlanEndLocation", "FlightPlanFlightNumber");
 
                     b.ToTable("Planes");
                 });
@@ -245,15 +251,15 @@ namespace SEP3_TIER3.Migrations
 
             modelBuilder.Entity("SEP3_TIER3.Model.Plane", b =>
                 {
-                    b.HasOne("SEP3_TIER3.Model.FlightPlan", "FlightPlan")
-                        .WithMany()
-                        .HasForeignKey("FlightPlanStartLocation", "FlightPlanEndLocation")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SEP3_TIER3.Model.Position", "Position")
                         .WithMany()
                         .HasForeignKey("PositionXCoordinate", "PositionYCoordinate")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SEP3_TIER3.Model.FlightPlan", "FlightPlan")
+                        .WithMany()
+                        .HasForeignKey("FlightPlanStartLocation", "FlightPlanEndLocation", "FlightPlanFlightNumber")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

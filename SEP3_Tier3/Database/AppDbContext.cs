@@ -41,7 +41,7 @@ namespace SEP3_TIER3.Database
                 .HasForeignKey(nodeEdge => nodeEdge.NodeId);
 
             modelBuilder.Entity<Timer>().HasKey(delay => new { delay.Hour, delay.Minutes, delay.Seconds });
-            modelBuilder.Entity<FlightPlan>().HasKey(flightPlan => new { flightPlan.StartLocation, flightPlan.EndLocation });
+            modelBuilder.Entity<FlightPlan>().HasKey(flightPlan => new { flightPlan.StartLocation, flightPlan.EndLocation, flightPlan.FlightNumber});
         }
     }
 }

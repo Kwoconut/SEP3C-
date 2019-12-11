@@ -4,8 +4,8 @@ namespace SEP3_TIER3.Model
 {
     public class FlightPlan
     {
+        public int FlightNumber { get; set; }
         public FlightDate DepartureTime { get; set; }
-
         public FlightDate ArrivalTime { get; set; }
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
@@ -15,7 +15,7 @@ namespace SEP3_TIER3.Model
         public string EndLocation { get; set; }
         public override string ToString()
         {
-            return $"DepartureTime: {DepartureTime} \nArrivalTime: {ArrivalTime} \nStartLocation: {StartLocation} \nEndLocation: {EndLocation}";
+            return $"FlightNumber: {FlightNumber}\nDepartureTime: {DepartureTime} \nArrivalTime: {ArrivalTime} \nStartLocation: {StartLocation} \nEndLocation: {EndLocation}";
         }
     }
 }
