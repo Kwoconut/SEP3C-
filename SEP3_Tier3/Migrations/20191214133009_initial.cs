@@ -2,7 +2,7 @@
 
 namespace SEP3_TIER3.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -137,8 +137,8 @@ namespace SEP3_TIER3.Migrations
                     Company = table.Column<string>(nullable: true),
                     FlightPlanCallSign = table.Column<string>(nullable: false),
                     FlightPlanFlightNumber = table.Column<int>(nullable: false),
-                    PositionXCoordinate = table.Column<double>(nullable: false),
-                    PositionYCoordinate = table.Column<double>(nullable: false),
+                    PlanePositionXCoordinate = table.Column<double>(nullable: false),
+                    PlanePositionYCoordinate = table.Column<double>(nullable: false),
                     Status = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -151,8 +151,8 @@ namespace SEP3_TIER3.Migrations
                         principalColumns: new[] { "CallSign", "FlightNumber" },
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Planes_Positions_PositionXCoordinate_PositionYCoordinate",
-                        columns: x => new { x.PositionXCoordinate, x.PositionYCoordinate },
+                        name: "FK_Planes_Positions_PlanePositionXCoordinate_PlanePositionYCoordinate",
+                        columns: x => new { x.PlanePositionXCoordinate, x.PlanePositionYCoordinate },
                         principalTable: "Positions",
                         principalColumns: new[] { "XCoordinate", "YCoordinate" },
                         onDelete: ReferentialAction.Cascade);
@@ -184,9 +184,9 @@ namespace SEP3_TIER3.Migrations
                 columns: new[] { "FlightPlanCallSign", "FlightPlanFlightNumber" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Planes_PositionXCoordinate_PositionYCoordinate",
+                name: "IX_Planes_PlanePositionXCoordinate_PlanePositionYCoordinate",
                 table: "Planes",
-                columns: new[] { "PositionXCoordinate", "PositionYCoordinate" });
+                columns: new[] { "PlanePositionXCoordinate", "PlanePositionYCoordinate" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

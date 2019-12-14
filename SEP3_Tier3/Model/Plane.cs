@@ -20,13 +20,13 @@ namespace SEP3_TIER3.Model
         public FlightPlan FlightPlan { get; set; }
 
         [Required]
-        public Position Position { get; set; }
+        public Position PlanePosition { get; set; }
 
         public string Status { get; set; } = "In air";
 
         public override string ToString()
         {
-            return $"RegNo: {RegistrationNo} \nModel:{Model} \nCompany: {Company} \nFlightPlan: {FlightPlan} \nPosition: {Position} \nStatus: {Status}";
+            return $"RegNo: {RegistrationNo} \nModel:{Model} \nCompany: {Company} \nFlightPlan: {FlightPlan} \nPosition: {PlanePosition} \nStatus: {Status}";
         }
     }
 }

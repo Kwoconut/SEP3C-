@@ -144,10 +144,10 @@ namespace SEP3_TIER3.Migrations
                     b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("PositionXCoordinate")
+                    b.Property<double>("PlanePositionXCoordinate")
                         .HasColumnType("float");
 
-                    b.Property<double>("PositionYCoordinate")
+                    b.Property<double>("PlanePositionYCoordinate")
                         .HasColumnType("float");
 
                     b.Property<string>("Status")
@@ -157,7 +157,7 @@ namespace SEP3_TIER3.Migrations
 
                     b.HasIndex("FlightPlanCallSign", "FlightPlanFlightNumber");
 
-                    b.HasIndex("PositionXCoordinate", "PositionYCoordinate");
+                    b.HasIndex("PlanePositionXCoordinate", "PlanePositionYCoordinate");
 
                     b.ToTable("Planes");
                 });
@@ -256,9 +256,9 @@ namespace SEP3_TIER3.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SEP3_TIER3.Model.Position", "Position")
+                    b.HasOne("SEP3_TIER3.Model.Position", "PlanePosition")
                         .WithMany()
-                        .HasForeignKey("PositionXCoordinate", "PositionYCoordinate")
+                        .HasForeignKey("PlanePositionXCoordinate", "PlanePositionYCoordinate")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

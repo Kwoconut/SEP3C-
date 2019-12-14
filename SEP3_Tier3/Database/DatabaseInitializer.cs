@@ -130,15 +130,15 @@ namespace SEP3_TIER3.Database
 
             var planes = new List<Plane>
             {
-            new Plane{RegistrationNo = "SB01AAA",Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
-            new Plane{RegistrationNo = "SB02AAA", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[1], Position = positionStated},
-            new Plane{RegistrationNo = "SB03AAA", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[2], Position = positionStated},
-            new Plane{RegistrationNo = "SB04AAA", Company= "Ryan Air", Model="Airbus A301", Status="In Air", FlightPlan = flightPlans[3], Position = positionStated},
-            new Plane{RegistrationNo = "SB05AAA", Company= "Ryan Air", Model="Airbus A301", Status="In Air", FlightPlan = flightPlans[4], Position = positionStated},
-            new Plane{RegistrationNo = "SB06AAA", Company= "Voila", Model="Airbus A320", Status="In Air", FlightPlan = flightPlans[5], Position = positionStated},
-            new Plane{RegistrationNo = "SB07AAA", Company= "Voila", Model="Airbus A320", Status="In Air", FlightPlan = flightPlans[6], Position = positionStated},
-            new Plane{RegistrationNo = "SB08AAA", Company= "Turkish Airlines", Model="Boeing 777", Status="In Air", FlightPlan = flightPlans[7], Position = positionStated},
-            new Plane{RegistrationNo = "SB09AAA", Company= "Turkish Airlines", Model="Boeing 777", Status="In Air", FlightPlan = flightPlans[8], Position = positionStated}
+            new Plane{RegistrationNo = "SB01AAA",Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[0], PlanePosition = positionStated},
+            new Plane{RegistrationNo = "SB02AAA", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[1], PlanePosition = positionStated},
+            new Plane{RegistrationNo = "SB03AAA", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[2], PlanePosition = positionStated},
+            new Plane{RegistrationNo = "SB04AAA", Company= "Ryan Air", Model="Airbus A301", Status="In Air", FlightPlan = flightPlans[3], PlanePosition = positionStated},
+            new Plane{RegistrationNo = "SB05AAA", Company= "Ryan Air", Model="Airbus A301", Status="In Air", FlightPlan = flightPlans[4], PlanePosition = positionStated},
+            new Plane{RegistrationNo = "SB06AAA", Company= "Voila", Model="Airbus A320", Status="In Air", FlightPlan = flightPlans[5], PlanePosition = positionStated},
+            new Plane{RegistrationNo = "SB07AAA", Company= "Voila", Model="Airbus A320", Status="In Air", FlightPlan = flightPlans[6], PlanePosition = positionStated},
+            new Plane{RegistrationNo = "SB08AAA", Company= "Turkish Airlines", Model="Boeing 777", Status="In Air", FlightPlan = flightPlans[7], PlanePosition = positionStated},
+            new Plane{RegistrationNo = "SB09AAA", Company= "Turkish Airlines", Model="Boeing 777", Status="In Air", FlightPlan = flightPlans[8], PlanePosition = positionStated}
             };
             var edges = new List<Edge>
             {
@@ -203,8 +203,8 @@ namespace SEP3_TIER3.Database
             new Node{NodeId = 32, Name = "Airspace A10", IsVisited = false, Position = positions[32], IsGroundNode = false },
             new Node{NodeId = 33, Name = "Airspace A11", IsVisited = false, Position = positions[33], IsGroundNode = false },
             new Node{NodeId = 34, Name = "Airspace A12", IsVisited = false, Position = positions[34], IsGroundNode = false },
-            new Node{NodeId = 35, Name = "Airspace B1", IsVisited = false, Position = positions[35], IsGroundNode = false },
-            new Node{NodeId = 36, Name = "Roma, Milano", IsVisited = false, Position = positions[36], IsGroundNode = false },
+            new Node{NodeId = 35, Name = "Berlin", IsVisited = false, Position = positions[35], IsGroundNode = false },
+            new Node{NodeId = 36, Name = "Roma, Varna", IsVisited = false, Position = positions[36], IsGroundNode = false },
             new Node{NodeId = 37, Name = "Lisbon", IsVisited = false, Position = positions[37], IsGroundNode = false },
             new Node{NodeId = 38, Name = "London", IsVisited = false, Position = positions[38], IsGroundNode = false },
             new Node{NodeId = 39, Name = "Detroit", IsVisited = false, Position = positions[39], IsGroundNode = false },
