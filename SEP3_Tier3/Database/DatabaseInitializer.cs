@@ -106,39 +106,39 @@ namespace SEP3_TIER3.Database
 
             var flightPlans = new List<FlightPlan>
             {
-            new FlightPlan{FlightNumber = 0, StartLocation="Sibiu", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[9]},
-            new FlightPlan{FlightNumber = 1, StartLocation="Copenhagen", EndLocation="Aalborg", ArrivalTime= flightDates[1], DepartureTime = flightDates[10]},
-            new FlightPlan{FlightNumber = 2, StartLocation="Lisbon", EndLocation="Aalborg", ArrivalTime= flightDates[2], DepartureTime = flightDates[11]},
-            new FlightPlan{FlightNumber = 3, StartLocation="Berlin", EndLocation="Aalborg", ArrivalTime= flightDates[3], DepartureTime = flightDates[12]},
-            new FlightPlan{FlightNumber = 4, StartLocation="London", EndLocation="Aalborg", ArrivalTime= flightDates[4], DepartureTime = flightDates[13]},
-            new FlightPlan{FlightNumber = 5, StartLocation="Roma", EndLocation="Aalborg", ArrivalTime= flightDates[5], DepartureTime = flightDates[14]},
-            new FlightPlan{FlightNumber = 6, StartLocation="Varna", EndLocation="Aalborg", ArrivalTime= flightDates[6], DepartureTime = flightDates[15]},
-            new FlightPlan{FlightNumber = 7, StartLocation="Bucharest", EndLocation="Aalborg", ArrivalTime= flightDates[7], DepartureTime = flightDates[16]},
-            new FlightPlan{FlightNumber = 8, StartLocation="Detroit", EndLocation="Aalborg", ArrivalTime= flightDates[8], DepartureTime = flightDates[17]},
-            new FlightPlan{FlightNumber = 9, StartLocation="Aalborg", EndLocation="Oslo", ArrivalTime= flightDates[18], DepartureTime = flightDates[27]},
-            new FlightPlan{FlightNumber = 10, StartLocation="Aalborg", EndLocation="Rio", ArrivalTime= flightDates[19], DepartureTime = flightDates[28]},
-            new FlightPlan{FlightNumber = 11, StartLocation="Aalborg", EndLocation="Tokyo", ArrivalTime= flightDates[20], DepartureTime = flightDates[29]},
-            new FlightPlan{FlightNumber = 12, StartLocation="Aalborg", EndLocation="Bucharest", ArrivalTime= flightDates[21], DepartureTime = flightDates[30]},
-            new FlightPlan{FlightNumber = 13, StartLocation="Aalborg", EndLocation="Chisinau", ArrivalTime= flightDates[22], DepartureTime = flightDates[31]},
-            new FlightPlan{FlightNumber = 14, StartLocation="Aalborg", EndLocation="Maimi", ArrivalTime= flightDates[23], DepartureTime = flightDates[32]},
-            new FlightPlan{FlightNumber = 15, StartLocation="Aalborg", EndLocation="Charlestone DC", ArrivalTime= flightDates[24], DepartureTime = flightDates[33]},
-            new FlightPlan{FlightNumber = 16, StartLocation="Aalborg", EndLocation="Paris", ArrivalTime= flightDates[25], DepartureTime = flightDates[34]},
-            new FlightPlan{FlightNumber = 17, StartLocation="Aalborg", EndLocation="Vienna", ArrivalTime= flightDates[26], DepartureTime = flightDates[35]},
+            new FlightPlan{CallSign="Wz3689", FlightNumber = 0, StartLocation="Sibiu", EndLocation="Aalborg", ArrivalTime= flightDates[0], DepartureTime = flightDates[9]},
+            new FlightPlan{CallSign="Wz4214", FlightNumber = 1, StartLocation="Copenhagen", EndLocation="Aalborg", ArrivalTime= flightDates[1], DepartureTime = flightDates[10]},
+            new FlightPlan{CallSign="Wz1533", FlightNumber = 2, StartLocation="Lisbon", EndLocation="Aalborg", ArrivalTime= flightDates[2], DepartureTime = flightDates[11]},
+            new FlightPlan{CallSign="Rn1634", FlightNumber = 3, StartLocation="Berlin", EndLocation="Aalborg", ArrivalTime= flightDates[3], DepartureTime = flightDates[12]},
+            new FlightPlan{CallSign="Rn3359", FlightNumber = 4, StartLocation="London", EndLocation="Aalborg", ArrivalTime= flightDates[4], DepartureTime = flightDates[13]},
+            new FlightPlan{CallSign="Va7433", FlightNumber = 5, StartLocation="Roma", EndLocation="Aalborg", ArrivalTime= flightDates[5], DepartureTime = flightDates[14]},
+            new FlightPlan{CallSign="Va9463", FlightNumber = 6, StartLocation="Varna", EndLocation="Aalborg", ArrivalTime= flightDates[6], DepartureTime = flightDates[15]},
+            new FlightPlan{CallSign="Ta3759", FlightNumber = 7, StartLocation="Bucharest", EndLocation="Aalborg", ArrivalTime= flightDates[7], DepartureTime = flightDates[16]},
+            new FlightPlan{CallSign="Ta6732", FlightNumber = 8, StartLocation="Detroit", EndLocation="Aalborg", ArrivalTime= flightDates[8], DepartureTime = flightDates[17]},
+            new FlightPlan{CallSign="noentry", FlightNumber = 9, StartLocation="Aalborg", EndLocation="Oslo", ArrivalTime= flightDates[18], DepartureTime = flightDates[27]},
+            new FlightPlan{CallSign="noentry", FlightNumber = 10, StartLocation="Aalborg", EndLocation="Rio", ArrivalTime= flightDates[19], DepartureTime = flightDates[28]},
+            new FlightPlan{CallSign="noentry", FlightNumber = 11, StartLocation="Aalborg", EndLocation="Tokyo", ArrivalTime= flightDates[20], DepartureTime = flightDates[29]},
+            new FlightPlan{CallSign="noentry", FlightNumber = 12, StartLocation="Aalborg", EndLocation="Bucharest", ArrivalTime= flightDates[21], DepartureTime = flightDates[30]},
+            new FlightPlan{CallSign="noentry", FlightNumber = 13, StartLocation="Aalborg", EndLocation="Chisinau", ArrivalTime= flightDates[22], DepartureTime = flightDates[31]},
+            new FlightPlan{CallSign="noentry", FlightNumber = 14, StartLocation="Aalborg", EndLocation="Maimi", ArrivalTime= flightDates[23], DepartureTime = flightDates[32]},
+            new FlightPlan{CallSign="noentry", FlightNumber = 15, StartLocation="Aalborg", EndLocation="Charlestone DC", ArrivalTime= flightDates[24], DepartureTime = flightDates[33]},
+            new FlightPlan{CallSign="noentry", FlightNumber = 16, StartLocation="Aalborg", EndLocation="Paris", ArrivalTime= flightDates[25], DepartureTime = flightDates[34]},
+            new FlightPlan{CallSign="noentry", FlightNumber = 17, StartLocation="Aalborg", EndLocation="Vienna", ArrivalTime= flightDates[26], DepartureTime = flightDates[35]},
             };
 
             Position positionStated = new Position { XCoordinate = 0, YCoordinate = 114 };
 
             var planes = new List<Plane>
             {
-            new Plane{CallSign="Wz3689", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
-            new Plane{CallSign="Wz4214", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[1], Position = positionStated},
-            new Plane{CallSign="Wz1533", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[2], Position = positionStated},
-            new Plane{CallSign="Rn1634", Company= "Ryan Air", Model="Airbus A301", Status="In Air", FlightPlan = flightPlans[3], Position = positionStated},
-            new Plane{CallSign="Rn3359", Company= "Ryan Air", Model="Airbus A301", Status="In Air", FlightPlan = flightPlans[4], Position = positionStated},
-            new Plane{CallSign="Va7433", Company= "Voila", Model="Airbus A320", Status="In Air", FlightPlan = flightPlans[5], Position = positionStated},
-            new Plane{CallSign="Va9463", Company= "Voila", Model="Airbus A320", Status="In Air", FlightPlan = flightPlans[6], Position = positionStated},
-            new Plane{CallSign="Ta3759", Company= "Turkish Airlines", Model="Boeing 777", Status="In Air", FlightPlan = flightPlans[7], Position = positionStated},
-            new Plane{CallSign="Ta6732", Company= "Turkish Airlines", Model="Boeing 777", Status="In Air", FlightPlan = flightPlans[8], Position = positionStated}
+            new Plane{RegistrationNo = "SB01AAA",Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[0], Position = positionStated},
+            new Plane{RegistrationNo = "SB02AAA", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[1], Position = positionStated},
+            new Plane{RegistrationNo = "SB03AAA", Company= "Wizz Air", Model="Airbus A700", Status="In Air", FlightPlan = flightPlans[2], Position = positionStated},
+            new Plane{RegistrationNo = "SB04AAA", Company= "Ryan Air", Model="Airbus A301", Status="In Air", FlightPlan = flightPlans[3], Position = positionStated},
+            new Plane{RegistrationNo = "SB05AAA", Company= "Ryan Air", Model="Airbus A301", Status="In Air", FlightPlan = flightPlans[4], Position = positionStated},
+            new Plane{RegistrationNo = "SB06AAA", Company= "Voila", Model="Airbus A320", Status="In Air", FlightPlan = flightPlans[5], Position = positionStated},
+            new Plane{RegistrationNo = "SB07AAA", Company= "Voila", Model="Airbus A320", Status="In Air", FlightPlan = flightPlans[6], Position = positionStated},
+            new Plane{RegistrationNo = "SB08AAA", Company= "Turkish Airlines", Model="Boeing 777", Status="In Air", FlightPlan = flightPlans[7], Position = positionStated},
+            new Plane{RegistrationNo = "SB09AAA", Company= "Turkish Airlines", Model="Boeing 777", Status="In Air", FlightPlan = flightPlans[8], Position = positionStated}
             };
             var edges = new List<Edge>
             {

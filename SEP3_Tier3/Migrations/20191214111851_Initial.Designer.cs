@@ -10,8 +10,8 @@ using SEP3_TIER3.Database;
 namespace SEP3_TIER3.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191214105043_initial")]
-    partial class initial
+    [Migration("20191214111851_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,10 +42,7 @@ namespace SEP3_TIER3.Migrations
 
             modelBuilder.Entity("SEP3_TIER3.Model.FlightPlan", b =>
                 {
-                    b.Property<string>("StartLocation")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("EndLocation")
+                    b.Property<string>("CallSign")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("FlightNumber")
@@ -69,7 +66,13 @@ namespace SEP3_TIER3.Migrations
                     b.Property<int?>("DepartureTimeSeconds")
                         .HasColumnType("int");
 
-                    b.HasKey("StartLocation", "EndLocation", "FlightNumber");
+                    b.Property<string>("EndLocation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StartLocation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CallSign", "FlightNumber");
 
                     b.HasIndex("ArrivalTimeHour", "ArrivalTimeMinutes", "ArrivalTimeSeconds");
 
@@ -126,23 +129,19 @@ namespace SEP3_TIER3.Migrations
 
             modelBuilder.Entity("SEP3_TIER3.Model.Plane", b =>
                 {
-                    b.Property<string>("CallSign")
+                    b.Property<string>("RegistrationNo")
                         .HasColumnType("nvarchar(10)")
                         .HasMaxLength(10);
 
                     b.Property<string>("Company")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FlightPlanEndLocation")
+                    b.Property<string>("FlightPlanCallSign")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("FlightPlanFlightNumber")
                         .HasColumnType("int");
-
-                    b.Property<string>("FlightPlanStartLocation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
@@ -156,11 +155,11 @@ namespace SEP3_TIER3.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CallSign");
+                    b.HasKey("RegistrationNo");
+
+                    b.HasIndex("FlightPlanCallSign", "FlightPlanFlightNumber");
 
                     b.HasIndex("PositionXCoordinate", "PositionYCoordinate");
-
-                    b.HasIndex("FlightPlanStartLocation", "FlightPlanEndLocation", "FlightPlanFlightNumber");
 
                     b.ToTable("Planes");
                 });
@@ -253,15 +252,15 @@ namespace SEP3_TIER3.Migrations
 
             modelBuilder.Entity("SEP3_TIER3.Model.Plane", b =>
                 {
-                    b.HasOne("SEP3_TIER3.Model.Position", "Position")
+                    b.HasOne("SEP3_TIER3.Model.FlightPlan", "FlightPlan")
                         .WithMany()
-                        .HasForeignKey("PositionXCoordinate", "PositionYCoordinate")
+                        .HasForeignKey("FlightPlanCallSign", "FlightPlanFlightNumber")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SEP3_TIER3.Model.FlightPlan", "FlightPlan")
+                    b.HasOne("SEP3_TIER3.Model.Position", "Position")
                         .WithMany()
-                        .HasForeignKey("FlightPlanStartLocation", "FlightPlanEndLocation", "FlightPlanFlightNumber")
+                        .HasForeignKey("PositionXCoordinate", "PositionYCoordinate")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

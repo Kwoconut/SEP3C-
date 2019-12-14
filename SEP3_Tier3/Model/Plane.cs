@@ -8,7 +8,7 @@ namespace SEP3_TIER3.Model
         [Required]
         [StringLength(10, MinimumLength = 3)]
         [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
-        public string CallSign { get; set; }
+        public string RegistrationNo { get; set; }
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
         public string Model { get; set; }
@@ -26,7 +26,7 @@ namespace SEP3_TIER3.Model
 
         public override string ToString()
         {
-            return $"CallSign: {CallSign} \nModel:{Model} \nCompany: {Company} \nFlightPlan: {FlightPlan} \nPosition: {Position} \nStatus: {Status}";
+            return $"RegNo: {RegistrationNo} \nModel:{Model} \nCompany: {Company} \nFlightPlan: {FlightPlan} \nPosition: {Position} \nStatus: {Status}";
         }
     }
 }

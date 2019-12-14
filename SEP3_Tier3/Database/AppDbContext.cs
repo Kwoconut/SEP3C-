@@ -7,7 +7,7 @@ namespace SEP3_TIER3.Database
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-VF4OOIP\SQLEXPRESS;Database=Database;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-6MHDJSO\SQLEXPRESS;Database=Database;Trusted_Connection=True;");
             //System.Data.Entity.Database.Delete(@"Server=DESKTOP-6MHDJSO\SQLEXPRESS;Database=Database;Trusted_Connection=True;");
         }
 
@@ -41,7 +41,8 @@ namespace SEP3_TIER3.Database
                 .HasForeignKey(nodeEdge => nodeEdge.NodeId);
 
             modelBuilder.Entity<Timer>().HasKey(delay => new { delay.Hour, delay.Minutes, delay.Seconds });
-            modelBuilder.Entity<FlightPlan>().HasKey(flightPlan => new { flightPlan.StartLocation, flightPlan.EndLocation, flightPlan.FlightNumber});
+            modelBuilder.Entity<FlightPlan>().HasKey(flightPlan => new { flightPlan.CallSign, flightPlan.FlightNumber});
+            modelBuilder.Entity<FlightPlan>().Property(p => p.FlightNumber).ValueGeneratedNever();
         }
     }
 }
