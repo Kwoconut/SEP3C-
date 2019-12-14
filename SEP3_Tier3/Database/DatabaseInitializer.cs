@@ -204,16 +204,16 @@ namespace SEP3_TIER3.Database
             new Node{NodeId = 33, Name = "Airspace A11", IsVisited = false, Position = positions[33], IsGroundNode = false },
             new Node{NodeId = 34, Name = "Airspace A12", IsVisited = false, Position = positions[34], IsGroundNode = false },
             new Node{NodeId = 35, Name = "Airspace B1", IsVisited = false, Position = positions[35], IsGroundNode = false },
-            new Node{NodeId = 36, Name = "Airspace B2", IsVisited = false, Position = positions[36], IsGroundNode = false },
-            new Node{NodeId = 37, Name = "Airspace B3", IsVisited = false, Position = positions[37], IsGroundNode = false },
-            new Node{NodeId = 38, Name = "Airspace B4", IsVisited = false, Position = positions[38], IsGroundNode = false },
-            new Node{NodeId = 39, Name = "Airspace B5", IsVisited = false, Position = positions[39], IsGroundNode = false },
+            new Node{NodeId = 36, Name = "Roma, Milano", IsVisited = false, Position = positions[36], IsGroundNode = false },
+            new Node{NodeId = 37, Name = "Lisbon", IsVisited = false, Position = positions[37], IsGroundNode = false },
+            new Node{NodeId = 38, Name = "London", IsVisited = false, Position = positions[38], IsGroundNode = false },
+            new Node{NodeId = 39, Name = "Detroit", IsVisited = false, Position = positions[39], IsGroundNode = false },
             new Node{NodeId = 40, Name = "Airspace B6", IsVisited = false, Position = positions[40], IsGroundNode = false },
             new Node{NodeId = 41, Name = "Airspace B7", IsVisited = false, Position = positions[41], IsGroundNode = false },
             new Node{NodeId = 42, Name = "Airspace B8", IsVisited = false, Position = positions[42], IsGroundNode = false },
             new Node{NodeId = 43, Name = "Airspace B9", IsVisited = false, Position = positions[43], IsGroundNode = false },
-            new Node{NodeId = 44, Name = "Airspace B10", IsVisited = false, Position = positions[44], IsGroundNode = false },
-            new Node{NodeId = 45, Name = "Airspace B11", IsVisited = false, Position = positions[45], IsGroundNode = false }
+            new Node{NodeId = 44, Name = "Copenhagen", IsVisited = false, Position = positions[44], IsGroundNode = false },
+            new Node{NodeId = 45, Name = "Bucharest, Sibiu", IsVisited = false, Position = positions[45], IsGroundNode = false }
             };
 
             var nodeEdges = new List<NodeEdge>

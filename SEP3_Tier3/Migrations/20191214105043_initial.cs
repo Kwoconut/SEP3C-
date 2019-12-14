@@ -2,7 +2,7 @@
 
 namespace SEP3_TIER3.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
