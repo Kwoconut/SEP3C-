@@ -135,10 +135,9 @@ namespace SEP3_TIER3.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FlightPlanCallSign")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("FlightPlanFlightNumber")
+                    b.Property<int?>("FlightPlanFlightNumber")
                         .HasColumnType("int");
 
                     b.Property<string>("Model")
@@ -252,9 +251,7 @@ namespace SEP3_TIER3.Migrations
                 {
                     b.HasOne("SEP3_TIER3.Model.FlightPlan", "FlightPlan")
                         .WithMany()
-                        .HasForeignKey("FlightPlanCallSign", "FlightPlanFlightNumber")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FlightPlanCallSign", "FlightPlanFlightNumber");
 
                     b.HasOne("SEP3_TIER3.Model.Position", "PlanePosition")
                         .WithMany()

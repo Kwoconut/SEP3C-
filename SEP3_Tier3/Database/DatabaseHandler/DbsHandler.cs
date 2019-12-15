@@ -6,19 +6,26 @@ using System.Linq;
 namespace SEP3_TIER3.Database.DatabaseHandler
 {
     class DbsHandler : DbsPersistence
-    {        
+    {
         public List<Plane> LoadPlanes()
         {
             using (var context = new AppDbContext())
             {
-                if(!(context.Positions.Any() &&  context.FlightDates.Any() && context.FlightPlans.Any()  && context.Planes.Any()))
+                if (!(context.Positions.Any() && context.FlightDates.Any() && context.FlightPlans.Any() && context.Planes.Any()))
                 {
                     throw new Exception("No data in Positions / FlightDates / FlightPlans / Planes");
                 }
                 List<Position> positions = context.Positions.ToList();
                 List<FlightDate> flightDates = context.FlightDates.ToList();
                 List<FlightPlan> flightPlans = context.FlightPlans.ToList();
-                List<Plane> planes = context.Planes.ToList();
+                List<Plane> planes = new List<Plane>();
+                foreach (Plane plane in context.Planes)
+                {
+                    if (!Object.ReferenceEquals(plane.FlightPlan, null))
+                    {
+                        planes.Add(plane);
+                    }
+                }
                 return planes;
             }
         }
@@ -28,7 +35,7 @@ namespace SEP3_TIER3.Database.DatabaseHandler
             using (var context = new AppDbContext())
             {
                 if (!(context.Positions.Any() && context.Nodes.Any()))
-                {   
+                {
                     throw new Exception("No data in GroundNodes / Position");
                 }
                 List<Position> positions = context.Positions.ToList();

@@ -2,7 +2,7 @@
 
 namespace SEP3_TIER3.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -135,8 +135,8 @@ namespace SEP3_TIER3.Migrations
                     RegistrationNo = table.Column<string>(maxLength: 10, nullable: false),
                     Model = table.Column<string>(nullable: true),
                     Company = table.Column<string>(nullable: true),
-                    FlightPlanCallSign = table.Column<string>(nullable: false),
-                    FlightPlanFlightNumber = table.Column<int>(nullable: false),
+                    FlightPlanCallSign = table.Column<string>(nullable: true),
+                    FlightPlanFlightNumber = table.Column<int>(nullable: true),
                     PlanePositionXCoordinate = table.Column<double>(nullable: false),
                     PlanePositionYCoordinate = table.Column<double>(nullable: false),
                     Status = table.Column<string>(nullable: true)
@@ -149,7 +149,7 @@ namespace SEP3_TIER3.Migrations
                         columns: x => new { x.FlightPlanCallSign, x.FlightPlanFlightNumber },
                         principalTable: "FlightPlans",
                         principalColumns: new[] { "CallSign", "FlightNumber" },
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Planes_Positions_PlanePositionXCoordinate_PlanePositionYCoordinate",
                         columns: x => new { x.PlanePositionXCoordinate, x.PlanePositionYCoordinate },

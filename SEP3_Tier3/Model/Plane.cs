@@ -16,8 +16,9 @@ namespace SEP3_TIER3.Model
         [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
         public string Company { get; set; }
 
-        [Required]
-        public FlightPlan FlightPlan { get; set; }
+#nullable enable
+        public FlightPlan? FlightPlan { get; set; }
+#nullable disable
 
         [Required]
         public Position PlanePosition { get; set; }

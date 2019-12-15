@@ -105,6 +105,11 @@ namespace SEP3_TIER3.Server
                                 SendEdges(stream, serverModel.EdgesDTO);
                                 break;
                             }
+                        case "DELETEFLIGHTPLAN":
+                            {
+                                serverModel.DeleteFlightPlan(request.flightPlanToDelete);
+                                break;
+                            }
                         default:
                             {
                                 break;
@@ -112,7 +117,7 @@ namespace SEP3_TIER3.Server
                     }
                 }
             }
-            catch (System.IO.IOException ex)
+            catch (Exception ex)
             {
                 stream.Close();
                 client.Close();
@@ -125,6 +130,7 @@ namespace SEP3_TIER3.Server
             public List<Plane> Planes { get; set; }
             public List<EdgeDTO> Edges { get; set; }
             public List<NodeDTO> Nodes { get; set; }
+            public string flightPlanToDelete { get; set; }
         }
     }
 }

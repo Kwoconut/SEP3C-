@@ -10,8 +10,8 @@ using SEP3_TIER3.Database;
 namespace SEP3_TIER3.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191214133009_initial")]
-    partial class initial
+    [Migration("20191215103126_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -137,10 +137,9 @@ namespace SEP3_TIER3.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FlightPlanCallSign")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("FlightPlanFlightNumber")
+                    b.Property<int?>("FlightPlanFlightNumber")
                         .HasColumnType("int");
 
                     b.Property<string>("Model")
@@ -254,9 +253,7 @@ namespace SEP3_TIER3.Migrations
                 {
                     b.HasOne("SEP3_TIER3.Model.FlightPlan", "FlightPlan")
                         .WithMany()
-                        .HasForeignKey("FlightPlanCallSign", "FlightPlanFlightNumber")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FlightPlanCallSign", "FlightPlanFlightNumber");
 
                     b.HasOne("SEP3_TIER3.Model.Position", "PlanePosition")
                         .WithMany()

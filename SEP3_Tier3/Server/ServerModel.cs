@@ -1,4 +1,5 @@
-﻿using SEP3_TIER3.Database.DatabaseHandler;
+﻿using SEP3_TIER3.Database;
+using SEP3_TIER3.Database.DatabaseHandler;
 using SEP3_TIER3.Model;
 using System;
 using System.Collections.Generic;
@@ -90,35 +91,43 @@ namespace SEP3_TIER3.Server
                 Console.WriteLine(e);
             }
         }
-        //algorithm for sending a list of nodes with wach node having a list of edges
-       /* public void CreateNodesToSend()
-        {
-            foreach (NodeEdge nodeEdge in NodeEdges)
-            {
-                bool flag = false;
-                foreach (NodeDTO nodeToSend in NodesDTO)
-                {
-                    if (nodeEdge.NodeId == nodeToSend.NodeId)
-                    {
-                        flag = !flag;
-                        nodeToSend.Edges.Add(new EdgeDTO { EdgeId = nodeEdge.Edge.EdgeId, FromNodeIndex = nodeEdge.Edge.FromNodeIndex, ToNodeIndex = nodeEdge.Edge.ToNodeIndex, Length = nodeEdge.Edge.Length });
-                    }
-                }
-                if (!flag)
-                {                  
-                    NodesDTO.Add(new NodeDTO { NodeId = nodeEdge.NodeId, Name = nodeEdge.Node.Name, IsVisited = nodeEdge.Node.IsVisited, Position = nodeEdge.Node.Position, Edges = new List<EdgeDTO> { new EdgeDTO { EdgeId = nodeEdge.Edge.EdgeId, FromNodeIndex = nodeEdge.Edge.FromNodeIndex, ToNodeIndex = nodeEdge.Edge.ToNodeIndex, Length = nodeEdge.Edge.Length } } });
-                }
-            }
 
-            foreach (NodeDTO node in NodesDTO)
+        public void DeleteFlightPlan(string flightPlanToDelete)
+        {
+            using (var context = new AppDbContext())
             {
-                node.NodeId = node.NodeId - 1;
-                foreach (EdgeDTO edge in node.Edges)
-                {
-                    edge.EdgeId = edge.EdgeId - 1;
-                }
+                DatabaseManager.DeleteFlightPlan(context,flightPlanToDelete);
             }
-        }*/
+        }
+        //algorithm for sending a list of nodes with wach node having a list of edges
+        /* public void CreateNodesToSend()
+         {
+             foreach (NodeEdge nodeEdge in NodeEdges)
+             {
+                 bool flag = false;
+                 foreach (NodeDTO nodeToSend in NodesDTO)
+                 {
+                     if (nodeEdge.NodeId == nodeToSend.NodeId)
+                     {
+                         flag = !flag;
+                         nodeToSend.Edges.Add(new EdgeDTO { EdgeId = nodeEdge.Edge.EdgeId, FromNodeIndex = nodeEdge.Edge.FromNodeIndex, ToNodeIndex = nodeEdge.Edge.ToNodeIndex, Length = nodeEdge.Edge.Length });
+                     }
+                 }
+                 if (!flag)
+                 {                  
+                     NodesDTO.Add(new NodeDTO { NodeId = nodeEdge.NodeId, Name = nodeEdge.Node.Name, IsVisited = nodeEdge.Node.IsVisited, Position = nodeEdge.Node.Position, Edges = new List<EdgeDTO> { new EdgeDTO { EdgeId = nodeEdge.Edge.EdgeId, FromNodeIndex = nodeEdge.Edge.FromNodeIndex, ToNodeIndex = nodeEdge.Edge.ToNodeIndex, Length = nodeEdge.Edge.Length } } });
+                 }
+             }
+
+             foreach (NodeDTO node in NodesDTO)
+             {
+                 node.NodeId = node.NodeId - 1;
+                 foreach (EdgeDTO edge in node.Edges)
+                 {
+                     edge.EdgeId = edge.EdgeId - 1;
+                 }
+             }
+         }*/
         //needed for algorithm
         /*public void LoadNodesWithEdgeAndPosition()
         {
