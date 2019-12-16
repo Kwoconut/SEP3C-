@@ -20,7 +20,6 @@ namespace SEP3_TIER3.Model
         public FlightPlan? FlightPlan { get; set; }
 #nullable disable
 
-        [Required]
         public Position PlanePosition { get; set; }
 
         public string Status { get; set; } = "In air";

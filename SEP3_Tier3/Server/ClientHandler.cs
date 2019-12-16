@@ -1,4 +1,5 @@
-﻿using SEP3_TIER3.Model;
+﻿using Newtonsoft.Json;
+using SEP3_TIER3.Model;
 using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
@@ -26,12 +27,16 @@ namespace SEP3_TIER3.Server
             byte[] receiveBytes = new byte[receiveLength];
             stream.Read(receiveBytes);
             String rcv = Encoding.ASCII.GetString(receiveBytes);
-            return JsonSerializer.Deserialize<Request>(rcv);
+            var settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            return JsonConvert.DeserializeObject<Request>(rcv, settings);
         }
         private void SendPlanes(NetworkStream stream, List<Plane> planes)
         {
             Request request = new Request { Type = "RESPONSEPLANES", Planes = planes };
-            var json = JsonSerializer.Serialize(request);
+            var json = System.Text.Json.JsonSerializer.Serialize(request);
             int length = Encoding.ASCII.GetByteCount(json);
             byte[] toSendBytes = Encoding.ASCII.GetBytes(json);
             byte[] toSendLengthBytes = BitConverter.GetBytes(length);
@@ -41,7 +46,7 @@ namespace SEP3_TIER3.Server
         private void SendNodes(NetworkStream stream, List<NodeDTO> nodesToSend)
         {
             Request request = new Request { Type = "RESPONSENODES", Nodes = nodesToSend };
-            var json = JsonSerializer.Serialize(request);
+            var json = System.Text.Json.JsonSerializer.Serialize(request);
             int length = Encoding.ASCII.GetByteCount(json);
             byte[] toSendBytes = Encoding.ASCII.GetBytes(json);
             byte[] toSendLengthBytes = BitConverter.GetBytes(length);
@@ -51,7 +56,7 @@ namespace SEP3_TIER3.Server
         private void SendEdges(NetworkStream stream, List<EdgeDTO> edgesToSend)
         {
             Request request = new Request { Type = "RESPONSEEDGES", Edges = edgesToSend };
-            var json = JsonSerializer.Serialize(request);
+            var json = System.Text.Json.JsonSerializer.Serialize(request);
             int length = Encoding.ASCII.GetByteCount(json);
             byte[] toSendBytes = Encoding.ASCII.GetBytes(json);
             byte[] toSendLengthBytes = BitConverter.GetBytes(length);
@@ -108,6 +113,11 @@ namespace SEP3_TIER3.Server
                         case "DELETEFLIGHTPLAN":
                             {
                                 serverModel.DeleteFlightPlan(request.flightPlanToDelete);
+                                break;
+                            }
+                        case "ADDFLIGHTPLAN":
+                            {
+                                Console.WriteLine(request.Planes[0]);
                                 break;
                             }
                         default:
