@@ -2,7 +2,7 @@
 
 namespace SEP3_TIER3.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,8 @@ namespace SEP3_TIER3.Migrations
                     EdgeId = table.Column<int>(nullable: false),
                     Length = table.Column<int>(nullable: false),
                     FromNodeIndex = table.Column<int>(nullable: false),
-                    ToNodeIndex = table.Column<int>(nullable: false)
+                    ToNodeIndex = table.Column<int>(nullable: false),
+                    IsGroundEdge = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

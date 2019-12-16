@@ -10,8 +10,8 @@ using SEP3_TIER3.Database;
 namespace SEP3_TIER3.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191215103126_Initial")]
-    partial class Initial
+    [Migration("20191215203721_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,6 +28,9 @@ namespace SEP3_TIER3.Migrations
 
                     b.Property<int>("FromNodeIndex")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsGroundEdge")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Length")
                         .HasColumnType("int");

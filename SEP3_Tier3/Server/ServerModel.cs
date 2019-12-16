@@ -62,7 +62,7 @@ namespace SEP3_TIER3.Server
             }
             foreach(Edge edge in Edges)
             {
-                EdgesDTO.Add(new EdgeDTO { EdgeId = edge.EdgeId, Length = edge.Length, FromNodeIndex = edge.FromNodeIndex, ToNodeIndex = edge.ToNodeIndex }) ;
+                EdgesDTO.Add(new EdgeDTO { EdgeId = edge.EdgeId, Length = edge.Length, FromNodeIndex = edge.FromNodeIndex, ToNodeIndex = edge.ToNodeIndex ,IsGroundEdge = edge.IsGroundEdge}) ;
             }
         }
         public void LoadNodes()

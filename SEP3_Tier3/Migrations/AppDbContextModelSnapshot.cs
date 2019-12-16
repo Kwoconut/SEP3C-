@@ -27,6 +27,9 @@ namespace SEP3_TIER3.Migrations
                     b.Property<int>("FromNodeIndex")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsGroundEdge")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Length")
                         .HasColumnType("int");
 
