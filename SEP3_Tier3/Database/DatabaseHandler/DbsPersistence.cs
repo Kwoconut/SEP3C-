@@ -13,6 +13,7 @@ namespace SEP3_TIER3.Database.DatabaseHandler
 
         public List<Edge> LoadEdges();
 
+        public void DeleteFlightPlan(string callSign);
         //relationship between nodes(with position) and their edges
         //public List<NodeEdge> LoadNodeWithEdge();
     }

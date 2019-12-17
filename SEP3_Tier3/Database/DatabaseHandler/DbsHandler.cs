@@ -1,4 +1,5 @@
-﻿using SEP3_TIER3.Model;
+﻿using Microsoft.EntityFrameworkCore;
+using SEP3_TIER3.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,22 @@ namespace SEP3_TIER3.Database.DatabaseHandler
                     }
                 }
                 return planes;
+            }
+        }
+        public void DeleteFlightPlan(string callSign)
+        {
+            using (var context = new AppDbContext())
+            {
+                context.Database.EnsureCreated();
+                if (!context.FlightPlans.Any())
+                {
+                    return;
+                }
+                var plane = context.Planes.Include(p => p.FlightPlan).Include(p => p.PlanePosition).Single(x => x.FlightPlan.CallSign.Equals(callSign));
+                plane.FlightPlan = null;
+                context.SaveChanges();
+                context.FlightPlans.Remove(context.FlightPlans.Single(p => p.CallSign.Equals(callSign)));
+                context.SaveChanges();
             }
         }
 

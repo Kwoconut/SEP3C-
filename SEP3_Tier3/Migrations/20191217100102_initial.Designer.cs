@@ -10,8 +10,8 @@ using SEP3_TIER3.Database;
 namespace SEP3_TIER3.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191216101020_Initial")]
-    partial class Initial
+    [Migration("20191217100102_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -148,10 +148,10 @@ namespace SEP3_TIER3.Migrations
                     b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("PlanePositionXCoordinate")
+                    b.Property<double?>("PlanePositionXCoordinate")
                         .HasColumnType("float");
 
-                    b.Property<double>("PlanePositionYCoordinate")
+                    b.Property<double?>("PlanePositionYCoordinate")
                         .HasColumnType("float");
 
                     b.Property<string>("Status")
@@ -260,9 +260,7 @@ namespace SEP3_TIER3.Migrations
 
                     b.HasOne("SEP3_TIER3.Model.Position", "PlanePosition")
                         .WithMany()
-                        .HasForeignKey("PlanePositionXCoordinate", "PlanePositionYCoordinate")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PlanePositionXCoordinate", "PlanePositionYCoordinate");
                 });
 #pragma warning restore 612, 618
         }

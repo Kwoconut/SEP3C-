@@ -2,7 +2,7 @@
 
 namespace SEP3_TIER3.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -138,8 +138,8 @@ namespace SEP3_TIER3.Migrations
                     Company = table.Column<string>(nullable: true),
                     FlightPlanCallSign = table.Column<string>(nullable: true),
                     FlightPlanFlightNumber = table.Column<int>(nullable: true),
-                    PlanePositionXCoordinate = table.Column<double>(nullable: false),
-                    PlanePositionYCoordinate = table.Column<double>(nullable: false),
+                    PlanePositionXCoordinate = table.Column<double>(nullable: true),
+                    PlanePositionYCoordinate = table.Column<double>(nullable: true),
                     Status = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -156,7 +156,7 @@ namespace SEP3_TIER3.Migrations
                         columns: x => new { x.PlanePositionXCoordinate, x.PlanePositionYCoordinate },
                         principalTable: "Positions",
                         principalColumns: new[] { "XCoordinate", "YCoordinate" },
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

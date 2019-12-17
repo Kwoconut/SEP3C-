@@ -94,10 +94,9 @@ namespace SEP3_TIER3.Server
 
         public void DeleteFlightPlan(string flightPlanToDelete)
         {
-            using (var context = new AppDbContext())
-            {
-                DatabaseManager.DeleteFlightPlan(context,flightPlanToDelete);
-            }
+
+                DatabaseAccess.DeleteFlightPlan(flightPlanToDelete);
+           
         }
         //algorithm for sending a list of nodes with wach node having a list of edges
         /* public void CreateNodesToSend()

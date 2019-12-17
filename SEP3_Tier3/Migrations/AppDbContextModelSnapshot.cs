@@ -146,10 +146,10 @@ namespace SEP3_TIER3.Migrations
                     b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("PlanePositionXCoordinate")
+                    b.Property<double?>("PlanePositionXCoordinate")
                         .HasColumnType("float");
 
-                    b.Property<double>("PlanePositionYCoordinate")
+                    b.Property<double?>("PlanePositionYCoordinate")
                         .HasColumnType("float");
 
                     b.Property<string>("Status")
@@ -258,9 +258,7 @@ namespace SEP3_TIER3.Migrations
 
                     b.HasOne("SEP3_TIER3.Model.Position", "PlanePosition")
                         .WithMany()
-                        .HasForeignKey("PlanePositionXCoordinate", "PlanePositionYCoordinate")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PlanePositionXCoordinate", "PlanePositionYCoordinate");
                 });
 #pragma warning restore 612, 618
         }
