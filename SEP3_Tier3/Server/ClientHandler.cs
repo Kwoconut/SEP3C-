@@ -1,4 +1,5 @@
-﻿using SEP3_TIER3.Model;
+﻿using SEP3_TIER3.DTO;
+using SEP3_TIER3.Model;
 using System;
 using System.Collections.Generic;
 using System.Net.Sockets;

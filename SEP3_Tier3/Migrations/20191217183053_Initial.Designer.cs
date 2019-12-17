@@ -10,8 +10,8 @@ using SEP3_TIER3.Database;
 namespace SEP3_TIER3.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191217100102_initial")]
-    partial class initial
+    [Migration("20191217183053_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

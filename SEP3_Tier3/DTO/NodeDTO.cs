@@ -1,4 +1,6 @@
-﻿namespace SEP3_TIER3.Model
+﻿using SEP3_TIER3.Model;
+
+namespace SEP3_TIER3.DTO
 {
     public class NodeDTO
     {
