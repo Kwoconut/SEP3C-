@@ -1,5 +1,4 @@
-﻿using SEP3_TIER3.Database;
-using SEP3_TIER3.Database.DatabaseHandler;
+﻿using SEP3_TIER3.Database.DatabaseHandler;
 using SEP3_TIER3.DTO;
 using SEP3_TIER3.Model;
 using System;
@@ -35,7 +34,7 @@ namespace SEP3_TIER3.Server
             //LoadNodesWithEdgeAndPosition();
             //CreateNodesToSend();
 
-            foreach(Plane plane in Planes)
+            foreach (Plane plane in Planes)
             {
                 Console.WriteLine(plane);
                 Console.WriteLine("-----------------------");
@@ -61,9 +60,9 @@ namespace SEP3_TIER3.Server
             {
                 Console.WriteLine(e);
             }
-            foreach(Edge edge in Edges)
+            foreach (Edge edge in Edges)
             {
-                EdgesDTO.Add(new EdgeDTO { EdgeId = edge.EdgeId, Length = edge.Length, FromNodeIndex = edge.FromNodeIndex, ToNodeIndex = edge.ToNodeIndex ,IsGroundEdge = edge.IsGroundEdge}) ;
+                EdgesDTO.Add(new EdgeDTO { EdgeId = edge.EdgeId, Length = edge.Length, FromNodeIndex = edge.FromNodeIndex, ToNodeIndex = edge.ToNodeIndex, IsGroundEdge = edge.IsGroundEdge });
             }
         }
         public void LoadNodes()
@@ -96,8 +95,8 @@ namespace SEP3_TIER3.Server
         public void DeleteFlightPlan(string flightPlanToDelete)
         {
 
-                DatabaseAccess.DeleteFlightPlan(flightPlanToDelete);
-           
+            DatabaseAccess.DeleteFlightPlan(flightPlanToDelete);
+
         }
         //algorithm for sending a list of nodes with wach node having a list of edges
         /* public void CreateNodesToSend()
@@ -140,6 +139,5 @@ namespace SEP3_TIER3.Server
                 Console.WriteLine(e);
             }
         }*/
-
     }
 }

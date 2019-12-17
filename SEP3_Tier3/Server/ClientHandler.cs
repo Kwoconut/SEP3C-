@@ -124,7 +124,6 @@ namespace SEP3_TIER3.Server
                 client.Close();
             }
         }
-
         public class Request
         {
             public string Type { get; set; }
