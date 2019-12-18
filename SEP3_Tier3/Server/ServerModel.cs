@@ -34,7 +34,7 @@ namespace SEP3_TIER3.Server
             //LoadNodesWithEdgeAndPosition();
             //CreateNodesToSend();
 
-            foreach (Plane plane in Planes)
+            /*foreach (Plane plane in Planes)
             {
                 Console.WriteLine(plane);
                 Console.WriteLine("-----------------------");
@@ -48,7 +48,7 @@ namespace SEP3_TIER3.Server
             {
                 Console.WriteLine(node);
                 Console.WriteLine("-----------------------");
-            }
+            }*/
         }
         public void LoadEdges()
         {
